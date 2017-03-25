@@ -1,8 +1,10 @@
 {
-  "name": "react-pendify-simple",
-  "version": "1.0.0",
+  "name": "react-pendifier-example",
+  "version": "0.0.1",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
   "keywords": [
     "react",
     "reactjs"
@@ -10,12 +12,12 @@
   "author": "Jamie Copeland",
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^15.0.0",
-    "@types/react-dom": "^0.14.20",
-    "ts-loader": "^0.9.5",
-    "typescript": "^2.0.6",
-    "webpack": "^1.9.6",
-    "webpack-dev-server": "^1.8.2"
+    "@types/react": "^15.0.20",
+    "@types/react-dom": "^0.14.23",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "react": "^15.3.1",

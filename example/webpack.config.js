@@ -1,19 +1,24 @@
+const path = require('path');
+
 module.exports = {
- entry: './src/index.ts',
- output: {
-   filename: 'bundle.js',
-   path: `./public/`
- },
- module: {
-   rules: [
-     {
-       test: /\.tsx?$/,
-       loader: 'ts-loader',
-       exclude: /node_modules/,
-     },
-   ]
- },
- resolve: {
-   extensions: [".tsx", ".ts", ".js"]
- },
+  context: path.resolve(__dirname, './src'),
+  entry: {
+    index: './index.tsx',
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './dist/assets'),
+    publicPath: '/assets',
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.ts(x?)$/,
+        loader: 'ts-loader',
+      },
+    ]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, './src'),
+  },
 };
