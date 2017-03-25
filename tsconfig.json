@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "lib": ["es6", "dom"],
-    "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitReturns": true,
@@ -20,7 +20,7 @@
   },
   "exclude": [
     "src/__tests__",
-    "examples",
+    "example",
     "node_modules",
     "lib"
   ]
