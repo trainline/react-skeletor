@@ -5,6 +5,9 @@ module.exports = {
   entry: {
     index: './index.tsx',
   },
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx']
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, './dist/assets'),
@@ -13,7 +16,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.ts(x?)$/,
+        test: /\.tsx?$/,
         loader: 'ts-loader',
       },
     ]
