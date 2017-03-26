@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { pendify } from 'react-pendifier';
+import { dummify } from 'react-pendifier';
 
 const styles = {
   container: {
@@ -49,7 +49,7 @@ export const Card: React.StatelessComponent<Props> = ({ data }) => (
   </div>
 );
 
-export default pendify({
+export default dummify({
   data: {
     firstName: 'TTTTTT',
     lastName: 'TTTTTTTTTTTT',
