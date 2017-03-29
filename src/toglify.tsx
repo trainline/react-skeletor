@@ -7,8 +7,9 @@ export interface ToglifyProps {
   style: React.CSSProperties;
 }
 
+const animationName = 'toglifyAnimation';
 const animation = `
-  @keyframes toglifyAnimation {
+  @keyframes ${animationName} {
     0% {
       opacity: 0.8;
     }
@@ -18,9 +19,11 @@ const animation = `
   }
 `;
 
+const defaultColor = '#bdc3c7';
+
 export const toglify = <TProps extends ToglifyProps>(
-  WrappedComponent: AnyComponent<TProps, any>,
-  color: string = '#bdc3c7'
+  WrappedComponent: AnyComponent<TProps, any>, //tslint:disable-line
+  color: string = defaultColor
 ) => {
 
   const ExportedComponent: React.StatelessComponent<TProps> = (props, context) => {
@@ -31,7 +34,7 @@ export const toglify = <TProps extends ToglifyProps>(
             ...props.style,
             backgroundColor: color,
             color,
-            animation: 'toglifyAnimation 1s alternate infinite'
+            animation: `${animationName} 1s alternate infinite`
           }}
         >
           <style dangerouslySetInnerHTML={{ __html: animation }}/>
