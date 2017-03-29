@@ -4,10 +4,9 @@ import { AnyComponent, Pendable } from './utils';
 
 export const pendify = <TProps extends Object>(WrappedComponent: AnyComponent<TProps & Pendable, any>) => {
 
-  const ExportedComponent: React.StatelessComponent<TProps> = (props, context) => {
-    // TODO Pull isPending from context
-    return <WrappedComponent {...props} isPending={context.isPending} />;
-  };
+  const ExportedComponent: React.StatelessComponent<TProps> = (props, context) => (
+    <WrappedComponent {...props} isPending={context.isPending} />
+  );
 
   ExportedComponent.contextTypes = {
     isPending: React.PropTypes.bool,

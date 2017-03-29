@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { dummify, pendify } from 'react-pendifier';
+import { dummify, toglify } from 'react-pendifier';
+import { UserCard } from './index';
+
+const dummyData = {
+  data: {
+    firstName: 'TTTTTT',
+    lastName: 'TTTTTTTTTTTT',
+    description: `
+      TTTTTTTTTTTTT TTTTTTT TTTTTT TTTT TT TTTTTTTTT TTTTT TTTTT
+      TT TTT T TTTTTTT TTTTT TT TTTTT TTTTT TTTTTTTTT TT TTTT TTTT TTT TTTT TT`
+  }
+};
 
 const styles = {
   container: {
@@ -16,7 +27,9 @@ const styles = {
     width: '100%'
   },
   h1: {
-    margin: 0
+    marginTop: 6,
+    marginBottom: 10,
+    lineHeight: '20px'
   },
   h3: {
     margin: 0
@@ -24,37 +37,47 @@ const styles = {
   description: {
     color: '#95a5a6',
     marginTop: 10,
-    wordWrap: 'break-word',
-    maxWidth: 400
+    lineHeight: '20px'
   }
 };
 
 export interface Props {
-  firstName: string;
-  lastName: string;
-  description: string;
-  isPending?: boolean;
+  data: UserCard;
 }
 
-export const Card: React.StatelessComponent<Props> = ({ firstName, lastName, description }) => (
+interface TextTitle {
+  text: string;
+  style: React.CSSProperties;
+}
+
+const FirstName = ({ text, style }: TextTitle) => (
+  <h1 style={style}>{text}</h1>
+);
+
+const LastName = ({ text, style }: TextTitle) => (
+  <h3 style={style}>{text}</h3>
+);
+
+const Description = ({ text, style }: TextTitle) => (
+  <div style={style}>{text}</div>
+);
+
+const SkeletonFirstName = toglify(FirstName);
+const SkeletonLastName = toglify(LastName);
+const SkeletonDescription = toglify(Description);
+
+export const Card: React.StatelessComponent<Props> = ({ data }) => (
   <div style={styles.container}>
     <img src="http://placehold.it/150x150"/>
     <div style={styles.content}>
-      <h1 style={styles.h1}>{firstName}</h1>
-      <h3 style={styles.h3}>{lastName}</h3>
-      <div style={styles.description}>{description}</div>
+      <SkeletonFirstName text={data.firstName} style={styles.h1}/>
+      <SkeletonLastName text={data.lastName} style={styles.h3}/>
+      <SkeletonDescription text={data.description} style={styles.description}/>
     </div>
   </div>
 );
 
 export default dummify(
-  {
-    firstName: 'TTTTTT',
-    lastName: 'TTTTTTTTTTTT',
-    description: 'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT' //tslint:disable-line,
-  },
-  ({ isPending }: Props) => {
-    return isPending === true;
-  }
-  )(pendify<Props>(Card));
-
+  dummyData,
+  ({ data }: Props) => data === undefined
+)(Card);
