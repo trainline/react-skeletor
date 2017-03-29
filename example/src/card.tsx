@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { dummify } from 'react-pendifier';
+import { dummify, pendify } from 'react-pendifier';
 
 const styles = {
   container: {
@@ -29,33 +29,32 @@ const styles = {
   }
 };
 
-interface Props {
-  data: {
-    firstName: string;
-    lastName: string;
-    description: string;
-  };
-  isLoading?: boolean;
+export interface Props {
+  firstName: string;
+  lastName: string;
+  description: string;
+  isPending?: boolean;
 }
 
-export const Card: React.StatelessComponent<Props> = ({ data }) => (
+export const Card: React.StatelessComponent<Props> = ({ firstName, lastName, description }) => (
   <div style={styles.container}>
     <img src="http://placehold.it/150x150"/>
     <div style={styles.content}>
-      <h1 style={styles.h1}>{data.firstName}</h1>
-      <h3 style={styles.h3}>{data.lastName}</h3>
-      <div style={styles.description}>{data.description}</div>
+      <h1 style={styles.h1}>{firstName}</h1>
+      <h3 style={styles.h3}>{lastName}</h3>
+      <div style={styles.description}>{description}</div>
     </div>
   </div>
 );
 
-export default dummify({
-  data: {
+export default dummify(
+  {
     firstName: 'TTTTTT',
     lastName: 'TTTTTTTTTTTT',
-    description: 'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT' //tslint:disable-line
+    description: 'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT' //tslint:disable-line,
   },
-  isLoading: false
-}, ({ isLoading }: Props) => {
-  return isLoading === true;
-})(Card);
+  ({ isPending }: Props) => {
+    return isPending === true;
+  }
+  )(pendify<Props>(Card));
+

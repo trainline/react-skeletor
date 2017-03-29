@@ -1,18 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Card from './card';
+import Card, { Props } from './card';
 
 const rootEl = document.getElementById('root');
 
-const data = {
+const data: Props = {
   firstName: 'John',
   lastName: 'Brander',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam amet laudantium impedit temporibus nobis porro placeat saepe.' //tslint:disable-line
+  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam amet laudantium impedit temporibus nobis porro placeat saepe.', //tslint:disable-line
+  isPending: true,
 };
 
-class Wrapper extends React.Component<void, { isLoading: boolean; }> {
+class Wrapper extends React.Component<void, { isPending: boolean; }> {
   state = {
-    isLoading: true
+    isPending: true
   };
 
   timeout: any;
@@ -20,7 +21,7 @@ class Wrapper extends React.Component<void, { isLoading: boolean; }> {
   componentWillMount() {
     this.timeout = setTimeout(() => {
       this.setState({
-        isLoading: false
+        isPending: false
       });
     }, 5000);
   }
@@ -32,7 +33,7 @@ class Wrapper extends React.Component<void, { isLoading: boolean; }> {
   render() {
     return (
       <div>
-        <Card data={data} isLoading={this.state.isLoading}/>
+        <Card {...data} />
       </div>
     );
   }
