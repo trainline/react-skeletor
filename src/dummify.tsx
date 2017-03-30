@@ -1,27 +1,25 @@
 import * as React from 'react';
 
-import { AnyComponent, Pendable } from './utils';
+import { AnyComponent } from './utils';
 
 // Can be either an object of data or a function returning an object of data
-type DummyData<T> = T | ((props: T) => any);
+type DummyData<T> = T | ((props: T) => any); // tslint:disable-line
 // define if the data are still loading or not
 type Predicate = <T>(props: T) => boolean;
 
 export const dummify = <TProps extends Object>(
   dummyData: DummyData<TProps>,
   predicate: Predicate
-) => (WrappedComponent: AnyComponent<TProps, any>): React.ComponentClass<TProps> => (
+) => (
+  WrappedComponent: AnyComponent<TProps, any> // tslint:disable-line
+): React.ComponentClass<TProps> => (
   class ExportedComponent extends React.Component<TProps, void> {
 
     static childContextTypes = {
       isPending: React.PropTypes.bool
     };
 
-    getChildContext(): Pendable {
-       return {
-          isPending: predicate(this.props),
-        };
-    }
+    getChildContext = () => ({ isPending: predicate(this.props) });
 
     render() {
       const { props } = this;

@@ -2,7 +2,9 @@ import * as React from 'react';
 
 import { AnyComponent, Pendable } from './utils';
 
-export const pendify = <TProps extends Object>(WrappedComponent: AnyComponent<TProps & Pendable, any>) => {
+export const pendify = <TProps extends Object>(
+  WrappedComponent: AnyComponent<TProps & Pendable, any> // tslint:disable-line
+) => {
 
   const ExportedComponent: React.StatelessComponent<TProps> = (props, context) => (
     <WrappedComponent {...props} isPending={context.isPending} />
