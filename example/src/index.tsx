@@ -22,10 +22,10 @@ interface State {
   data: UserCard;
 }
 
-class Wrapper extends React.Component<void, State> {
+class App extends React.Component<void, State> {
   state = {} as State;
 
-  timeout: any;
+  timeout: number;
 
   componentWillMount() {
     this.timeout = setTimeout(() => {
@@ -50,7 +50,7 @@ class Wrapper extends React.Component<void, State> {
 
 function render() {
   ReactDOM.render(
-    <Wrapper/>,
+    <App/>,
     rootEl
   );
 }
