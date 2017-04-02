@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const createSkeletonElement = (type: string) => {
+export const createSkeletonElement = (type: any) => {
   const ExportedComponent: React.StatelessComponent<any> = (props: any, context: any) => {
     const pendingStyle = context.isPending && typeof context.styling === 'object'
       ? context.styling

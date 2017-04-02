@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import CardInline from './components/CardInlineStyles/CardInlineStyles';
+import CardInlineStyles from './components/CardInlineStyles/CardInlineStyles';
+import CardStyledComponents from './components/CardStyledComponents/CardStyledComponents';
 
 const rootEl = document.getElementById('root');
 
@@ -32,7 +33,7 @@ class App extends React.Component<void, State> {
       this.setState({
         data
       });
-    }, 3500);
+    }, 2500);
   }
 
   componentWillUnmount() {
@@ -42,7 +43,12 @@ class App extends React.Component<void, State> {
   render() {
     return (
       <div>
-        <CardInline data={this.state.data} />
+        <div>
+          <CardInlineStyles data={this.state.data} />
+        </div>
+        <div>
+          <CardStyledComponents data={this.state.data} />
+        </div>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { dummify, elements as skel } from 'react-pendifier';
 
 import { UserCard } from '../../index';
 
-import styles from './CardInlineStyles.styles';
+import { Avatar, Content, FirstName, LastName, Container, Description } from './CardStyledComponents.styles';
 
 const dummyData = {
   data: {
@@ -20,20 +20,18 @@ export interface Props {
 }
 
 export const Card: React.StatelessComponent<Props> = ({ data }) => (
-  <div>
-    <div style={styles.container}>
-      <skel.img style={styles.img} src="http://placehold.it/150x150" />
-      <div style={styles.content}>
-        <h1 style={styles.h1}>
-          <skel.span>{data.firstName}</skel.span>
-        </h1>
-        <h3 style={styles.h3}>
-          <skel.span>{data.lastName}</skel.span>
-        </h3>
-        <skel.div style={styles.description}>{data.description}</skel.div>
-      </div>
-    </div>
-  </div>
+  <Container>
+    <Avatar src="http://placehold.it/150x150" />
+    <Content>
+      <FirstName>
+        <skel.span>{data.firstName}</skel.span>
+      </FirstName>
+      <LastName>
+        <skel.span>{data.lastName}</skel.span>
+      </LastName>
+      <Description>{data.description}</Description>
+    </Content>
+  </Container>
 );
 
 const pendingColor = '#bdc3c7';
