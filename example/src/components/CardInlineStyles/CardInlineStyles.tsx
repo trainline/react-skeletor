@@ -22,12 +22,12 @@ export interface Props {
 export const Card: React.StatelessComponent<Props> = ({ data }) => (
   <div>
     <div style={styles.container}>
-      <skel.img style={styles.img} src="http://placehold.it/150x150" />
+      <skel.img style={styles.avatar} src="http://placehold.it/150x150" />
       <div style={styles.content}>
-        <h1 style={styles.h1}>
+        <h1 style={styles.firstName}>
           <skel.span>{data.firstName}</skel.span>
         </h1>
-        <h3 style={styles.h3}>
+        <h3 style={styles.lastName}>
           <skel.span>{data.lastName}</skel.span>
         </h3>
         <skel.div style={styles.description}>{data.description}</skel.div>

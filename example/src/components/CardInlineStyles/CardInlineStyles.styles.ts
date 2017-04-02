@@ -12,16 +12,16 @@ export default {
     fontFamily: 'system-ui, sans-serif',
     width: 'calc(100% - 150px)'
   },
-  img: {
+  avatar: {
     display: 'block',
     width: '150px',
     height: '150px',
   },
-  h1: {
+  firstName: {
     marginTop: 0,
     marginBottom: 10,
   },
-  h3: {
+  lastName: {
     margin: 0,
   },
   description: {
