@@ -58,9 +58,9 @@ const Description = ({ text, style }: ToglifyProps) => (
   <div style={style}>{text}</div>
 );
 
-const SkeletonFirstName = toglify(FirstName);
-const SkeletonLastName = toglify(LastName);
-const SkeletonDescription = toglify(Description);
+const SkeletonFirstName = toglify()(FirstName);
+const SkeletonLastName = toglify()(LastName);
+const SkeletonDescription = toglify()(Description);
 
 export const Card: React.StatelessComponent<Props> = ({ data }) => (
   <div style={styles.container}>
