@@ -2,9 +2,8 @@ import * as React from 'react';
 
 import { AnyComponent } from './utils';
 
-export const stylify = <TProps extends Object>(
+export const stylify = <TProps extends Object>(styling: React.CSSProperties | string) => (
   WrappedComponent: AnyComponent<TProps, any>, // tslint:disable-line
-  styling: React.CSSProperties | string
 ) => {
   const isClassName = typeof styling === 'string';
 
