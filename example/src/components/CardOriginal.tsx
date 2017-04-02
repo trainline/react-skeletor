@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { dummify, toglify } from 'react-pendifier';
-import { UserCard } from './index';
+import { UserCard } from '../index';
 
 const dummyData = {
   data: {
@@ -59,7 +59,7 @@ const SkeletonDescription = toglify()(
 
 export const Card: React.StatelessComponent<Props> = ({ data }) => (
   <div style={styles.container}>
-    <img src="http://placehold.it/150x150"/>
+    <img src="http://placehold.it/150x150" />
     <div style={styles.content}>
       <SkeletonFirstName text={data.firstName} style={styles.h1}/>
       <SkeletonLastName text={data.lastName} style={styles.h3}/>
@@ -71,5 +71,6 @@ export const Card: React.StatelessComponent<Props> = ({ data }) => (
 export default dummify(
   dummyData,
   // Declare pending state if data is undefined
-  ({ data }: Props) => data === undefined
+  ({ data }: Props) => data === undefined,
+  {}
 )(Card);

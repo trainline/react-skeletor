@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Card from './card';
+import CardInline from './components/CardInlineStyles/CardInlineStyles';
 
 const rootEl = document.getElementById('root');
 
@@ -12,9 +12,9 @@ export interface UserCard {
 }
 
 const data: UserCard = {
-  firstName: 'John',
-  lastName: 'Brander',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam amet laudantium impedit temporibus nobis porro placeat saepe.', //tslint:disable-line
+  firstName: 'Darth',
+  lastName: 'Vader',
+  description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
   isPending: true,
 };
 
@@ -42,7 +42,7 @@ class App extends React.Component<void, State> {
   render() {
     return (
       <div>
-        <Card data={this.state.data} />
+        <CardInline data={this.state.data} />
       </div>
     );
   }

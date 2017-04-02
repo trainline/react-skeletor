@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AnyComponent } from './utils';
+import { AnyComponent, Styling } from './utils';
 
 // Can be either an object of data or a function returning an object of data
 type DummyData<T> = T | ((props: T) => any); // tslint:disable-line
@@ -9,17 +9,25 @@ type Predicate = <T>(props: T) => boolean;
 
 export const dummify = <TProps extends Object>(
   dummyData: DummyData<TProps>,
-  predicate: Predicate
+  predicate: Predicate,
+  styling: Styling,
 ) => (
   WrappedComponent: AnyComponent<TProps, any> // tslint:disable-line
 ): React.ComponentClass<TProps> => (
   class ExportedComponent extends React.Component<TProps, void> {
 
     static childContextTypes = {
-      isPending: React.PropTypes.bool
+      isPending: React.PropTypes.bool,
+      styling: React.PropTypes.oneOfType([
+        React.PropTypes.string,
+        React.PropTypes.object,
+      ]),
     };
 
-    getChildContext = () => ({ isPending: predicate(this.props) });
+    getChildContext = () => ({
+      isPending: predicate(this.props),
+      styling: styling,
+    })
 
     render() {
       const { props } = this;

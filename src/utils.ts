@@ -5,3 +5,10 @@ export type AnyComponent<TProps, TState> = React.StatelessComponent<TProps>
 export interface Pendable {
   isPending: boolean;
 }
+
+export type Styling = React.CSSProperties | string;
+
+export const createSkeletonStyle = (color: string) => ({
+  backgroundColor: color,
+  color,
+});
