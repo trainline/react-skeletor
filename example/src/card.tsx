@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { dummify, toglify } from 'react-pendifier';
-import { ToglifyProps } from 'react-pendifier/lib/toglify';
 import { UserCard } from './index';
 
 const dummyData = {
@@ -46,21 +45,17 @@ export interface Props {
   data: UserCard;
 }
 
-const FirstName = ({ text, style }: ToglifyProps) => (
-  <h1 style={style}>{text}</h1>
+const SkeletonFirstName = toglify()(
+  ({ text, style }) => (<h1 style={style}>{text}</h1>)
 );
 
-const LastName = ({ text, style }: ToglifyProps) => (
-  <h3 style={style}>{text}</h3>
+const SkeletonLastName = toglify()(
+  ({ text, style }) => (<h3 style={style}>{text}</h3>)
 );
 
-const Description = ({ text, style }: ToglifyProps) => (
-  <div style={style}>{text}</div>
+const SkeletonDescription = toglify()(
+  (props) => console.log(props) || (<div style={props.style}>{props.text}</div>)
 );
-
-const SkeletonFirstName = toglify()(FirstName);
-const SkeletonLastName = toglify()(LastName);
-const SkeletonDescription = toglify()(Description);
 
 export const Card: React.StatelessComponent<Props> = ({ data }) => (
   <div style={styles.container}>
@@ -68,7 +63,7 @@ export const Card: React.StatelessComponent<Props> = ({ data }) => (
     <div style={styles.content}>
       <SkeletonFirstName text={data.firstName} style={styles.h1}/>
       <SkeletonLastName text={data.lastName} style={styles.h3}/>
-      <SkeletonDescription text={data.description} style={styles.description}/>
+      <SkeletonDescription text={data.description} style={styles.description} />
     </div>
   </div>
 );
