@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AnyComponent, Styling } from './utils';
+import { AnyComponent, Styling, contextTypes } from './utils';
 
 // Can be either an object of data or a function returning an object of data
 type DummyData<T> = T | ((props: T) => any); // tslint:disable-line
@@ -16,17 +16,13 @@ export const dummify = <TProps extends Object>(
 ): React.ComponentClass<TProps> => (
   class ExportedComponent extends React.Component<TProps, void> {
 
-    static childContextTypes = {
-      isPending: React.PropTypes.bool,
-      styling: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object,
-      ]),
-    };
+    static childContextTypes = contextTypes;
 
     getChildContext = () => ({
-      isPending: predicate(this.props),
-      styling: styling,
+      skeletor: {
+        isPending: predicate(this.props),
+        styling: styling,
+      },
     })
 
     render() {

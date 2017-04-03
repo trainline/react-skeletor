@@ -1,12 +1,16 @@
 import * as React from 'react';
+import { contextTypes } from './utils';
+import { Context } from '../lib/utils';
 
 export const createSkeletonElement = (type: any) => {
-  const ExportedComponent: React.StatelessComponent<any> = (props: any, context: any) => {
-    const pendingStyle = context.isPending && typeof context.styling === 'object'
-      ? context.styling
+  const ExportedComponent: React.StatelessComponent<any> = (
+    props: any, { skeletor: { isPending, styling } }: Context
+  ) => {
+    const pendingStyle = isPending && typeof styling === 'object'
+      ? styling
       : {};
-    const pendingClassName = context.isPending && typeof context.styling === 'string'
-      ? ` ${context.styling}`
+    const pendingClassName = isPending && typeof styling === 'string'
+      ? ` ${styling}`
       : '';
 
     return React.createElement(type, {
@@ -19,13 +23,7 @@ export const createSkeletonElement = (type: any) => {
     });
   };
 
-  ExportedComponent.contextTypes = {
-    isPending: React.PropTypes.bool,
-    styling: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
-    ]),
-  };
+  ExportedComponent.contextTypes = contextTypes;
 
   return ExportedComponent;
 };
@@ -38,4 +36,5 @@ export const elements = {
   h3: createSkeletonElement('h4'),
   p: createSkeletonElement('p'),
   img: createSkeletonElement('img'),
+  // TODO Add the rest!
 };
