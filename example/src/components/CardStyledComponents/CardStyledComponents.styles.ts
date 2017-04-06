@@ -31,7 +31,8 @@ export const LastName = styled.h3`
   margin: 0;
 `;
 
-export const Description = createSkeletonElement(styled.div`
+export const Description = createSkeletonElement()(
+  styled.div`
   color: #95a5a6;
   marginTop: 10px;
 `);

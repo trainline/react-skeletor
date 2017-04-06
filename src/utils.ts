@@ -8,7 +8,10 @@ export interface Pendable {
   isPending: boolean;
 }
 
-export type Styling = React.CSSProperties | string;
+export interface Styling  {
+  style?: React.CSSProperties;
+  className?: string;
+};
 
 export interface SkeletorContext {
   isPending: boolean;

@@ -68,9 +68,17 @@ export const Card: React.StatelessComponent<Props> = ({ data }) => (
   </div>
 );
 
+const pendingColor = '#bdc3c7';
+
 export default dummify(
   dummyData,
   // Declare pending state if data is undefined
   ({ data }: Props) => data === undefined,
-  {}
+  {
+    style: {
+      backgroundColor: pendingColor,
+      color: pendingColor,
+      borderColor: pendingColor,
+    }
+  }
 )(Card);

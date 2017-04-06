@@ -45,8 +45,10 @@ export default dummify(
   // Pass down pending style
   // TODO - Composable styling only HOC at this level instead of 3rd arg of dummify to avoid confusing data & styling?
   {
-    backgroundColor: pendingColor,
-    color: pendingColor,
-    borderColor: pendingColor,
+    style: {
+      backgroundColor: pendingColor,
+      color: pendingColor,
+      borderColor: pendingColor,
+    }
   }
 )(Card);
