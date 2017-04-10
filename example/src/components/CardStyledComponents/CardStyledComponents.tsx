@@ -6,30 +6,31 @@ import { UserCard } from '../../index';
 import { Avatar, Content, FirstName, LastName, Container, Description } from './CardStyledComponents.styles';
 
 const dummyData = {
-  data: {
+  card: {
     firstName: '______',
     lastName: '____________',
     description: `
       ____ __________ __________ ___________ ___ _____ _____
-      __ _____ __ ________ _____ ____`
+      __ _____ __ ________ _____ ____`,
+    avatar: ''
   }
 };
 
 export interface Props {
-  data: UserCard;
+  card: UserCard;
 }
 
-export const Card: React.StatelessComponent<Props> = ({ data }) => (
+export const Card: React.StatelessComponent<Props> = ({ card }) => (
   <Container>
-    <Avatar src="http://placehold.it/150x150" />
+    <Avatar src={card.avatar} />
     <Content>
       <FirstName>
-        <skel.span>{data.firstName}</skel.span>
+        <skel.span>{card.firstName}</skel.span>
       </FirstName>
       <LastName>
-        <skel.span>{data.lastName}</skel.span>
+        <skel.span>{card.lastName}</skel.span>
       </LastName>
-      <Description>{data.description}</Description>
+      <Description>{card.description}</Description>
     </Content>
   </Container>
 );
@@ -39,7 +40,7 @@ const pendingColor = '#bdc3c7';
 export default dummify(
   dummyData,
   // Declare pending state if data is undefined
-  ({ data }: Props) => data === undefined,
+  ({ card }: Props) => card === undefined,
   // Pass down pending style
   // TODO - Composable styling only HOC at this level instead of 3rd arg of dummify to avoid confusing data & styling?
   {

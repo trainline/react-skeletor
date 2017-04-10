@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { createSkeletonElement } from '../../../../src/somethingify';
+import { createSkeletonElement } from 'react-pendifier/lib/somethingify';
 
 export const Container = styled.div`
   display: flex;
@@ -16,11 +16,11 @@ export const Content = styled.div`
   width: calc(100% - 150px);
 `;
 
-export const Avatar = styled.img`
+export const Avatar = createSkeletonElement()(styled.img`
     display: block;
     width: 150px;
     height: 150px;
-`;
+`);
 
 export const FirstName = styled.h1`
   marginTop: 0;
@@ -31,8 +31,7 @@ export const LastName = styled.h3`
   margin: 0;
 `;
 
-export const Description = createSkeletonElement()(
-  styled.div`
+export const Description = createSkeletonElement()(styled.div`
   color: #95a5a6;
   marginTop: 10px;
 `);

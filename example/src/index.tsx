@@ -9,6 +9,7 @@ export interface UserCard {
   firstName: string;
   lastName: string;
   description: string;
+  avatar: string;
   isPending?: boolean;
 }
 
@@ -16,6 +17,7 @@ const data: UserCard = {
   firstName: 'Darth',
   lastName: 'Vader',
   description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
+  avatar: 'http://placehold.it/150x150',
   isPending: true,
 };
 
@@ -44,10 +46,10 @@ class App extends React.Component<void, State> {
     return (
       <div>
         <div>
-          <CardInlineStyles data={this.state.data} />
+          <CardInlineStyles card={this.state.data} />
         </div>
         <div>
-          <CardStyledComponents data={this.state.data} />
+          <CardStyledComponents card={this.state.data} />
         </div>
       </div>
     );
