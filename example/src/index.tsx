@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import CardInlineStyles from './components/CardInlineStyles/CardInlineStyles';
 import CardStyledComponents from './components/CardStyledComponents/CardStyledComponents';
 
-const rootEl = document.getElementById('root');
+// Application data shape
 
 export interface UserCard {
   firstName: string;
@@ -13,44 +14,46 @@ export interface UserCard {
   isPending?: boolean;
 }
 
-const data: UserCard = {
-  firstName: 'Darth',
-  lastName: 'Vader',
-  description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
-  avatar: 'http://placehold.it/150x150',
-  isPending: true,
-};
-
-interface State {
-  data: UserCard;
+interface ApplicationState {
+  cardA: UserCard;
+  cardB: UserCard;
 }
 
-class App extends React.Component<void, State> {
-  state = {} as State;
+// Fake API
 
-  timeout: number;
+const data: ApplicationState = {
+  cardA: {
+    firstName: 'Darth',
+    lastName: 'Vader',
+    description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
+    avatar: 'http://placehold.it/150x150',
+    isPending: true,
+  },
+  cardB: {
+    firstName: 'Jar Jar',
+    lastName: 'Binks',
+    description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
+    avatar: 'http://placehold.it/150x150',
+    isPending: true,
+  }
+};
+
+const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 2500));
+
+// Application Component
+
+class App extends React.Component<void, ApplicationState> {
+  state = {} as ApplicationState;
 
   componentWillMount() {
-    this.timeout = setTimeout(() => {
-      this.setState({
-        data
-      });
-    }, 2500);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
+    fakeAPI().then((response) => this.setState(response));
   }
 
   render() {
     return (
       <div>
-        <div>
-          <CardInlineStyles card={this.state.data} />
-        </div>
-        <div>
-          <CardStyledComponents card={this.state.data} />
-        </div>
+        <CardInlineStyles card={this.state.cardA} />
+        <CardStyledComponents card={this.state.cardB} />
       </div>
     );
   }
@@ -59,7 +62,7 @@ class App extends React.Component<void, State> {
 function render() {
   ReactDOM.render(
     <App/>,
-    rootEl
+    document.getElementById('root')
   );
 }
 
