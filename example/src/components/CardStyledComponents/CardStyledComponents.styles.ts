@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { createSkeletonElement } from 'react-pendifier';
+import { createSkeletonElement } from 'react-skeletor';
 
 export const Container = styled.div`
   display: flex;

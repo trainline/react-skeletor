@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createSkeletonProvider, elements as skel } from 'react-pendifier';
+import { createSkeletonProvider, elements as skel } from 'react-skeletor';
 
 import { UserCard } from '../../index';
 
