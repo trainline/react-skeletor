@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { dummify, elements as skel } from 'react-pendifier';
+import { createSkeletonProvider, elements as skel } from 'react-pendifier';
 
 import { UserCard } from '../../index';
 
@@ -37,12 +37,11 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
 
 const pendingColor = '#bdc3c7';
 
-export default dummify(
+export default createSkeletonProvider(
   dummyData,
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,
   // Pass down pending style
-  // TODO - Composable styling only HOC at this level instead of 3rd arg of dummify to avoid confusing data & styling?
   {
     style: {
       backgroundColor: pendingColor,

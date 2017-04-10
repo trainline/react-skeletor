@@ -7,7 +7,7 @@ type DummyData<T> = T | ((props: T) => any); // tslint:disable-line
 // define if the data are still loading or not
 type Predicate = <T>(props: T) => boolean;
 
-export const dummify = <TProps extends Object>(
+export const createSkeletonProvider = <TProps extends Object>(
   dummyData: DummyData<TProps>,
   predicate: Predicate,
   styling?: Styling,

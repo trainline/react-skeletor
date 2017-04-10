@@ -1,5 +1,3 @@
-export { dummify } from './dummify';
-export { pendify } from './pendify';
-export { toglify } from './toglify';
-export { stylify } from './stylify';
-export { elements } from './somethingify';
+export { createSkeletonProvider } from './createSkeletonProvider';
+export { createSkeletonElement } from './createSkeletonElement';
+export { elements } from './elements';

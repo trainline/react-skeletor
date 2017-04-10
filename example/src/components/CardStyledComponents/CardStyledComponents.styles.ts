@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { createSkeletonElement } from 'react-pendifier/lib/somethingify';
+import { createSkeletonElement } from 'react-pendifier';
 
 export const Container = styled.div`
   display: flex;
