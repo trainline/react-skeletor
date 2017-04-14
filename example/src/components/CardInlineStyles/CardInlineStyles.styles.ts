@@ -5,17 +5,17 @@ export default {
     margin: '40px auto',
     border: '1px solid  #ddd'
   },
+  avatar: {
+    display: 'block',
+    width: '150px',
+    height: '150px',
+  },
   content: {
     backgroundColor: '#f0f0f0',
     padding: '10px 16px',
     color: '#34495e',
     fontFamily: 'system-ui, sans-serif',
     width: 'calc(100% - 150px)'
-  },
-  avatar: {
-    display: 'block',
-    width: '150px',
-    height: '150px',
   },
   firstName: {
     marginTop: 0,

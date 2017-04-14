@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createSkeletonProvider, elements as skel } from 'react-skeletor';
+import { createSkeletonProvider, elements as sk } from 'react-skeletor';
 
 import { UserCard } from '../../index';
 
@@ -25,10 +25,10 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
     <Avatar src={card.avatar} />
     <Content>
       <FirstName>
-        <skel.span>{card.firstName}</skel.span>
+        <sk.span>{card.firstName}</sk.span>
       </FirstName>
       <LastName>
-        <skel.span>{card.lastName}</skel.span>
+        <sk.span>{card.lastName}</sk.span>
       </LastName>
       <Description>{card.description}</Description>
     </Content>
@@ -47,6 +47,6 @@ export default createSkeletonProvider(
       backgroundColor: pendingColor,
       color: pendingColor,
       borderColor: pendingColor,
-    }
+    },
   }
 )(Card);

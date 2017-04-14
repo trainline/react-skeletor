@@ -8,6 +8,12 @@ export const Container = styled.div`
   border: 1px solid  #ddd;
 `;
 
+export const Avatar = createSkeletonElement()(styled.img`
+  display: block;
+  width: 150px;
+  height: 150px;
+`);
+
 export const Content = styled.div`
   backgroundColor: #f0f0f0;
   padding: 10px 16px;
@@ -15,12 +21,6 @@ export const Content = styled.div`
   fontFamily: sans-serif;
   width: calc(100% - 150px);
 `;
-
-export const Avatar = createSkeletonElement()(styled.img`
-    display: block;
-    width: 150px;
-    height: 150px;
-`);
 
 export const FirstName = styled.h1`
   marginTop: 0;
