@@ -2,6 +2,11 @@
   <head>
     <title>React Skeletor</title>
     <style>
+
+      /*
+        Global styles
+      */
+
       html {
         box-sizing: border-box;
       }
@@ -9,12 +14,9 @@
         box-sizing: inherit;
       }
 
-      .pending {
-        color: #bdc3c7!important;
-        background-color: #bdc3c7!important;
-        border-color: #bdc3c7!important;
-      }
-
+      /*
+        Animation is here since we can't do this in JS with inline styles :(
+      */
       @keyframes skeletonAnimation {
         0% {
           opacity: 0.8;
@@ -24,6 +26,14 @@
         }
       }
 
+      /*
+        Pending styles for CSS class based example
+      */
+      .pending {
+        color: #bdc3c7!important;
+        background-color: #bdc3c7!important;
+        border-color: #bdc3c7!important;
+      }
     </style>
   </head>
   <body>

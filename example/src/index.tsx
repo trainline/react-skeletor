@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import CardInlineStyles from './components/CardInlineStyles/CardInlineStyles';
 import CardStyledComponents from './components/CardStyledComponents/CardStyledComponents';
+import CardInlineStyles from './components/CardInlineStyles/CardInlineStyles';
+import CardCSS from './components/CardCSS/CardCSS';
+
 
 // Application data shape
 
@@ -17,6 +19,7 @@ export interface UserCard {
 interface ApplicationState {
   cardA: UserCard;
   cardB: UserCard;
+  cardC: UserCard;
 }
 
 // Fake API
@@ -30,6 +33,13 @@ const data: ApplicationState = {
     isPending: true,
   },
   cardB: {
+    firstName: 'Lando',
+    lastName: 'Calrissian',
+    description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
+    avatar: 'http://placehold.it/150x150',
+    isPending: true,
+  },
+  cardC: {
     firstName: 'Jar Jar',
     lastName: 'Binks',
     description: 'It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire', //tslint:disable-line
@@ -38,7 +48,7 @@ const data: ApplicationState = {
   }
 };
 
-const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 2500));
+const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 10000002500));
 
 // Application Component
 
@@ -54,6 +64,7 @@ class App extends React.Component<void, ApplicationState> {
       <div>
         <CardInlineStyles card={this.state.cardA} />
         <CardStyledComponents card={this.state.cardB} />
+        <CardCSS card={this.state.cardC} />
       </div>
     );
   }
