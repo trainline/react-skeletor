@@ -32,7 +32,7 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
           display: flex;
           width: 80%;
           margin: 40px auto;
-          border: 1px solid  #ddd;
+          border: 1px solid #ddd;
         }
 
         .card__avatar {
