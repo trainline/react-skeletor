@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { contextTypes, Context, Styling } from './utils';
+import { contextTypes, Context } from './utils';
 
 const createCustomStyle = (
   isPending: boolean,
@@ -16,10 +16,11 @@ const createCustomStyle = (
 const createClassName = (isPending: Boolean, prop?: string, context?: string, custom?: string) => (
   (prop ? `${prop} ` : '') +
   (context ? `${context} ` : '') +
-  (custom ? `${custom} ` : '')
+  (custom ? custom : '')
 );
 
-export const createSkeletonElement = (customStyling?: Styling) => (type: any) => {
+export const createSkeletonElement = (type: any) => {
+
   const ExportedComponent: React.StatelessComponent<any> = (
     props: any, { skeletor: { isPending, styling } }: Context
   ) => React.createElement(type, {
@@ -27,14 +28,12 @@ export const createSkeletonElement = (customStyling?: Styling) => (type: any) =>
     style: createCustomStyle(
       isPending,
       props.style,
-      styling && styling.style,
-      customStyling && customStyling.style
+      styling && styling.style
     ),
     className: createClassName(
       isPending,
       props.className,
-      styling && styling.className,
-      customStyling && customStyling.className
+      styling && styling.className
     )
   });
 

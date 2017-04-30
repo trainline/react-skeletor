@@ -8,7 +8,7 @@ export const Container = styled.div`
   border: 1px solid  #ddd;
 `;
 
-export const Avatar = createSkeletonElement()(styled.img`
+export const Avatar = createSkeletonElement(styled.img`
   display: block;
   width: 150px;
   height: 150px;
@@ -31,7 +31,7 @@ export const LastName = styled.h3`
   margin: 0;
 `;
 
-export const Description = createSkeletonElement()(styled.div`
+export const Description = createSkeletonElement(styled.div`
   color: #95a5a6;
   marginTop: 10px;
 `);

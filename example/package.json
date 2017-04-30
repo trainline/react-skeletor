@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "link": "cd ../ && npm link && cd example && npm link react-skeletor"
   },
   "keywords": [
     "react",
