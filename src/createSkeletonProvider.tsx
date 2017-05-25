@@ -5,20 +5,20 @@ import { AnyComponent, Styling, contextTypes } from './utils';
 export type DummyFn<TProps> = (props: TProps) => TProps;
 export type DummyData<TProps> = TProps | DummyFn<TProps>;
 
-export function createSkeletonProvider<TProps>(
-  dummyData: DummyData<TProps>,
-  predicate: (props: TProps) => boolean,
+export function createSkeletonProvider<TPendingProps, TProps extends TPendingProps = TPendingProps>(
+  dummyData: DummyData<TPendingProps>,
+  predicate: (props: TPendingProps) => boolean,
   styling?: Styling,
 ) {
-  return function(WrappedComponent: AnyComponent<TProps, any>): React.ComponentClass<TProps> { // tslint:disable-line
+  return function(WrappedComponent: AnyComponent<TProps, void>): React.ComponentClass<TPendingProps> {
 
-    class ExportedComponent extends React.Component<TProps, void> {
+    class ExportedComponent extends React.Component<TPendingProps, void> {
 
       static childContextTypes = contextTypes;
 
       getChildContext = () => ({
         skeletor: {
-          isPending: predicate(this.props as TProps),
+          isPending: predicate(this.props),
           styling: styling,
         },
       })
@@ -28,15 +28,23 @@ export function createSkeletonProvider<TProps>(
 
         // Append dummy data only if the condition defined by the predicate are met,
         // by default if there is no predicate, append the data.
-        if (predicate ? predicate(props as TProps) : true) {
+        if (predicate ? predicate(props) : true) {
           // Either call the dummyData as a function or assign dummyData to data
-          const data = typeof dummyData === 'function' ? dummyData(props as TProps) : dummyData;
+          const data = typeof dummyData === 'function' ? dummyData(props) : dummyData;
 
-          return React.createElement(WrappedComponent as React.ComponentClass<TProps>, Object.assign({}, props, data));
+          // TODO: fix with typescript 2.4
+          return React.createElement(
+            WrappedComponent as React.ComponentClass<TProps>,
+            Object.assign({}, props, data) as TProps
+          );
         }
 
-        return React.createElement(WrappedComponent as React.ComponentClass<TProps>, props);
-      };
+        // TODO: fix with typescript 2.4
+        return React.createElement(
+          WrappedComponent  as React.ComponentClass<TProps>,
+          props as TProps
+        );
+      }
     }
 
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createSkeletonProvider, SkSpan } from 'react-skeletor';
+import { createSkeletonProvider, Span } from 'react-skeletor';
 
 import { UserCard } from '../../index';
 
@@ -13,10 +13,16 @@ const dummyData = {
       ____ __________ __________ ___________ ___ _____ _____
       __ _____ __ ________ _____ ____`,
     avatar: ''
-  }
+  },
+  title: 'defaultTitle',
 };
 
-export interface Props {
+export interface PendingProps {
+  card?: UserCard;
+  title: string;
+}
+
+export interface Props extends PendingProps {
   card: UserCard;
 }
 
@@ -25,10 +31,10 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
     <Avatar src={card.avatar} />
     <Content>
       <FirstName>
-        <SkSpan>{card.firstName}</SkSpan>
+        <Span>{card.firstName}</Span>
       </FirstName>
       <LastName>
-        <SkSpan>{card.lastName}</SkSpan>
+        <Span>{card.lastName}</Span>
       </LastName>
       <Description>{card.description}</Description>
     </Content>
@@ -37,7 +43,7 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
 
 const pendingColor = '#bdc3c7';
 
-export default createSkeletonProvider(
+export default createSkeletonProvider<PendingProps, Props>(
   dummyData,
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,

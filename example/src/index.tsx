@@ -63,7 +63,7 @@ class App extends React.Component<{}, ApplicationState> {
     return (
       <div>
         <CardInlineStyles card={this.state.cardA} />
-        <CardStyledComponents card={this.state.cardB} />
+        <CardStyledComponents card={this.state.cardB} title="Example title" />
         <CardCSS card={this.state.cardC} />
       </div>
     );

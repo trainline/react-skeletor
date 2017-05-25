@@ -3,10 +3,12 @@ import { createSkeletonElement } from './createSkeletonElement';
 export { createSkeletonProvider } from './createSkeletonProvider';
 export { createSkeletonElement } from './createSkeletonElement';
 
-export const SkDiv = createSkeletonElement('div');
-export const SkSpan = createSkeletonElement('span');
-export const SkH1 = createSkeletonElement('h1');
-export const SkH2 = createSkeletonElement('h2');
-export const SkH3 = createSkeletonElement('h3');
-export const SkP = createSkeletonElement('p');
-export const SkImg = createSkeletonElement('img');
+export const Div = createSkeletonElement('div');
+export const Span = createSkeletonElement('span');
+export const H1 = createSkeletonElement('h1');
+export const H2 = createSkeletonElement('h2');
+export const H3 = createSkeletonElement('h3');
+export const P = createSkeletonElement('p');
+export const Img = createSkeletonElement('img');
+
+export default createSkeletonElement;
