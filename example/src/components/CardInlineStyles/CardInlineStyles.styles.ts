@@ -1,8 +1,7 @@
 export default {
   container: {
     display: 'flex',
-    width: '80%',
-    margin: '40px auto',
+    width: '100%',
     border: '1px solid  #ddd'
   },
   avatar: {
@@ -27,5 +26,9 @@ export default {
   description: {
     color: '#95a5a6',
     marginTop: 10,
+  },
+  wrapper: {
+    backgroundColor: 'white',
+    padding: 20
   }
 };

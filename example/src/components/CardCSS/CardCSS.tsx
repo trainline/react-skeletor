@@ -5,11 +5,11 @@ import { UserCard } from '../../index';
 
 const dummyData = {
   card: {
-    firstName: '______',
-    lastName: '____________',
+    firstName: 'TTTTTTT',
+    lastName: 'TTTTTTTTTTTTTT',
     description: `
-      ____ __________ __________ ___________ ___ _____ _____
-      __ `,
+      TTTTTTT TTTTTTTTTTTTTTT TTTTTTT TTTTTTT TTTT
+      TTTTTTTTT `,
     avatar: ''
   }
 };

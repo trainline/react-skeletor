@@ -7,11 +7,11 @@ import styles from './CardInlineStyles.styles';
 
 const dummyData = {
   card: {
-    firstName: '______',
-    lastName: '____________',
+    firstName: 'TTTTTT',
+    lastName: 'TTTTTTTTTTTT',
     description: `
-      ____ __________ __________ ___________ ___ _____ _____
-      __ _____ __ ________ _____ ____`,
+      TTTTTT TTT TTTT TTTTT TTTTTT TTTTTTTTTT TT T TTTTTTT TTTTT
+      TTTTT TTTTTTT TTTTT TT TT TTTTTTTTTTTT TTT`,
     avatar: ''
   }
 };
@@ -21,17 +21,18 @@ export interface Props {
 }
 
 export const Card: React.StatelessComponent<Props> = ({ card }) => (
-  <div>
+  <div style={styles.wrapper}>
+    <h3>Rendering:</h3>
     <div style={styles.container}>
-      <Img style={styles.avatar} src={card.avatar} />
+      <Img style={styles.avatar} src={card.avatar} className="pending"/>
       <div style={styles.content}>
         <h1 style={styles.firstName}>
-          <Span>{card.firstName}</Span>
+          <Span className="pending">{card.firstName}</Span>
         </h1>
         <h3 style={styles.lastName}>
-          <Span>{card.lastName}</Span>
+          <Span className="pending">{card.lastName}</Span>
         </h3>
-        <Div style={styles.description}>{card.description}</Div>
+        <Div style={styles.description} className="pending">{card.description}</Div>
       </div>
     </div>
   </div>

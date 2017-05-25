@@ -24,6 +24,7 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-live": "^1.5.2",
     "styled-components": "^1.4.6"
   }
 }

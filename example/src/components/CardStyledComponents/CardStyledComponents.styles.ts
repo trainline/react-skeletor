@@ -8,10 +8,21 @@ export const Container = styled.div`
   border: 1px solid  #ddd;
 `;
 
+export const Name = createSkeletonElement(styled.span`
+  animation-name: skeletonAnimation;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+`);
+
 export const Avatar = createSkeletonElement(styled.img`
   display: block;
   width: 150px;
   height: 150px;
+  animation-name: skeletonAnimation;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 `);
 
 export const Content = styled.div`
@@ -34,4 +45,8 @@ export const LastName = styled.h3`
 export const Description = createSkeletonElement(styled.div`
   color: #95a5a6;
   marginTop: 10px;
+  animation-name: skeletonAnimation;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 `);

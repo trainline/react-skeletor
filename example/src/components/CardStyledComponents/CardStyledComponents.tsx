@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { createSkeletonProvider, Span } from 'react-skeletor';
+import { createSkeletonProvider } from 'react-skeletor';
 
 import { UserCard } from '../../index';
 
-import { Avatar, Content, FirstName, LastName, Container, Description } from './CardStyledComponents.styles';
+import { Avatar, Content, FirstName, LastName, Container, Description, Name } from './CardStyledComponents.styles';
 
 const dummyData = {
   card: {
-    firstName: '______',
-    lastName: '____________',
+    firstName: 'TTTTTTTT',
+    lastName: 'TTTTTTTTTT',
     description: `
-      ____ __________ __________ ___________ ___ _____ _____
-      __ _____ __ ________ _____ ____`,
+      TTT TTTTT TTT TTT T TTTTTTT TTT TTTTTT TTT TTT
+      TT TTTTT TTTTT TTTTT TTTTT TTTT`,
     avatar: ''
   },
   title: 'defaultTitle',
@@ -31,10 +31,10 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
     <Avatar src={card.avatar} />
     <Content>
       <FirstName>
-        <Span>{card.firstName}</Span>
+        <Name>{card.firstName}</Name>
       </FirstName>
       <LastName>
-        <Span>{card.lastName}</Span>
+        <Name>{card.lastName}</Name>
       </LastName>
       <Description>{card.description}</Description>
     </Content>

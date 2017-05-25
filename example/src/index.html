@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>React Skeletor</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700" rel="stylesheet">
     <style>
 
       /*
@@ -12,8 +13,12 @@
       }
       *, *:before, *:after {
         box-sizing: inherit;
+        font-family: 'Source Code Pro', monospace;
       }
 
+      body {
+       background-color: #059E87; 
+      }
       /*
         Animation is here since we can't do this in JS with inline styles :(
       */
@@ -21,8 +26,11 @@
         0% {
           opacity: 0.8;
         }
+        50% {
+          opacity: 0.4;
+        }
         100% {
-          opacity: 0.2;
+          opacity: 0.8;
         }
       }
 
@@ -33,6 +41,10 @@
         color: #bdc3c7!important;
         background-color: #bdc3c7!important;
         border-color: #bdc3c7!important;
+        animation-name: skeletonAnimation;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
       }
     </style>
   </head>

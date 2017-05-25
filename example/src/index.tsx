@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import CardStyledComponents from './components/CardStyledComponents/CardStyledComponents';
-import CardInlineStyles from './components/CardInlineStyles/CardInlineStyles';
-import CardCSS from './components/CardCSS/CardCSS';
-
+import styled from 'styled-components';
+// import CardStyledComponents from './components/CardStyledComponents/CardStyledComponents';
+import CardInlineStyles from './components/CardInlineStyles';
+// import CardCSS from './components/CardCSS/CardCSS';
 
 // Application data shape
 
@@ -50,6 +49,12 @@ const data: ApplicationState = {
 
 const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 10000002500));
 
+const H1 = styled.h1`
+  color: white;
+  font-size: 50px;
+  text-align: center;
+`;
+
 // Application Component
 
 class App extends React.Component<{}, ApplicationState> {
@@ -62,9 +67,8 @@ class App extends React.Component<{}, ApplicationState> {
   render() {
     return (
       <div>
+        <H1>React-skeletor examples</H1>
         <CardInlineStyles card={this.state.cardA} />
-        <CardStyledComponents card={this.state.cardB} title="Example title" />
-        <CardCSS card={this.state.cardC} />
       </div>
     );
   }
