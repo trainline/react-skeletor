@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server",
+    "postinstall": "npm run link",
     "link": "cd ../ && npm link && cd example && npm link react-skeletor"
   },
   "keywords": [
@@ -13,16 +14,16 @@
   "author": "Jamie Copeland",
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^15.0.20",
-    "@types/react-dom": "^0.14.23",
-    "ts-loader": "^2.0.3",
-    "typescript": "^2.2.1",
-    "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.2"
+    "@types/react": "^15.0.25",
+    "@types/react-dom": "^15.5.0",
+    "ts-loader": "^2.1.0",
+    "typescript": "^2.3.3",
+    "webpack": "^2.6.0",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "styled-components": "^1.4.4"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "styled-components": "^1.4.6"
   }
 }

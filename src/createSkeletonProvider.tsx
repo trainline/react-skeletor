@@ -32,10 +32,10 @@ export function createSkeletonProvider<TProps>(
           // Either call the dummyData as a function or assign dummyData to data
           const data = typeof dummyData === 'function' ? dummyData(props as TProps) : dummyData;
 
-          return <WrappedComponent {...props} {...data}/>;
+          return React.createElement(WrappedComponent as React.ComponentClass<TProps>, Object.assign({}, props, data));
         }
 
-        return <WrappedComponent {...props} />;
+        return React.createElement(WrappedComponent as React.ComponentClass<TProps>, props);
       };
     }
 

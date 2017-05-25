@@ -52,7 +52,7 @@ const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTime
 
 // Application Component
 
-class App extends React.Component<void, ApplicationState> {
+class App extends React.Component<{}, ApplicationState> {
   state = {} as ApplicationState;
 
   componentWillMount() {
