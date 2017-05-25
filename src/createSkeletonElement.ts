@@ -19,7 +19,11 @@ const createClassName = (isPending: Boolean, prop?: string, context?: string, cu
   (custom ? custom : '')
 );
 
-export const createSkeletonElement = (type: string) => {
+export const createSkeletonElement = <
+  P,
+  T extends React.Component<P, React.ComponentState>,
+  C extends React.ComponentClass<P>
+>(type: React.ClassType<P, T, C>) => {
   const ExportedComponent: React.StatelessComponent<any> = ( // tslint:disable-line
     props: any, { skeletor: { isPending, styling } }: Context // tslint:disable-line
   ) => React.createElement(type, {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createSkeletonProvider, SkSpan, SkImg, SkDiv } from 'react-skeletor';
+import { createSkeletonProvider, Span, Img, Div } from 'react-skeletor';
 
 import { UserCard } from '../../index';
 
@@ -65,15 +65,15 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
       ` }}
     />
     <div className="card__container">
-      <SkImg className="card__avatar" src={card.avatar} />
+      <Img className="card__avatar" src={card.avatar} />
       <div className="card__content">
         <h1 className="card__first-name">
-          <SkSpan>{card.firstName}</SkSpan>
+          <Span>{card.firstName}</Span>
         </h1>
         <h3 className="card__last-name">
-          <SkSpan>{card.lastName}</SkSpan>
+          <Span>{card.lastName}</Span>
         </h3>
-        <SkDiv className="card__description">{card.description}</SkDiv>
+        <Div className="card__description">{card.description}</Div>
       </div>
     </div>
   </div>
