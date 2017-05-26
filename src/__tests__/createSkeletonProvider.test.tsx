@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 
-import { createSkeletonProvider } from './createSkeletonProvider';
+import { createSkeletonProvider } from '../createSkeletonProvider';
 
 interface CardProps {
   firstName?: string;
@@ -37,7 +37,7 @@ describe('createSkeletonProvider', () => {
       <SkeletonizedCard/>
     );
 
-    expect(wrapper.find('h1')).toBe(dummyData.firstName);
+    expect(wrapper.find('h1').text()).toBe(dummyData.firstName);
   });
 
   it('should not render dummy data if no data are loading', () => {
@@ -50,6 +50,6 @@ describe('createSkeletonProvider', () => {
       <SkeletonizedCard {...actualData}/>
     );
 
-    expect(wrapper.find('h1')).toBe(actualData.firstName);
+    expect(wrapper.find('h1').text()).toBe(actualData.firstName);
   });
 });

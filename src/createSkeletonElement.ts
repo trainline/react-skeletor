@@ -1,22 +1,12 @@
 import * as React from 'react';
-
 import { contextTypes, Context } from './utils';
 
-const createCustomStyle = (
-  isPending: boolean,
-  prop?: React.CSSProperties,
-  context?: React.CSSProperties,
-  custom?: React.CSSProperties
-) => ({
-  ...prop,
-  ...(isPending ? context : undefined),
-  ...(isPending ? custom : undefined)
-});
+const createStyle = (styles: React.CSSProperties[]) => (
+  styles.filter(Boolean).reduce((acc, next) => ({ ...acc, ...next }), {})
+);
 
-const createClassName = (isPending: Boolean, prop?: string, context?: string, custom?: string) => (
-  (prop ? `${prop} ` : '') +
-  (context ? `${context} ` : '') +
-  (custom ? custom : '')
+const createClassName = (classnames: (string|undefined)[]) => (
+  classnames.filter(Boolean).join(' ')
 );
 
 export const createSkeletonElement = <
@@ -28,16 +18,14 @@ export const createSkeletonElement = <
     props: any, { skeletor: { isPending, styling } }: Context // tslint:disable-line
   ) => React.createElement(type as any, { // tslint:disable-line
     ...props,
-    style: createCustomStyle(
-      isPending,
+    style: isPending ? createStyle([
       props.style,
       styling && styling.style
-    ),
-    className: createClassName(
-      isPending,
+    ]) : undefined,
+    className: isPending ? createClassName([
       props.className,
       styling && styling.className
-    )
+    ]) : undefined
   });
 
   ExportedComponent.contextTypes = contextTypes;
