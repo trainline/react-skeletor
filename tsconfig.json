@@ -20,7 +20,7 @@
   },
   "exclude": [
     "src/__tests__",
-    "example",
+    "demo",
     "node_modules",
     "lib"
   ]

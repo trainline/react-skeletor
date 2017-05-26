@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createSkeletonProvider, Span, Img, Div } from 'react-skeletor';
 
-import { UserCard } from '../../index';
+import { UserCard } from '../../data';
 
 const dummyData = {
   card: {

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "postinstall": "npm run link",
-    "link": "cd ../ && npm link && cd example && npm link react-skeletor"
+    "link": "cd ../ && npm link && cd - && npm link react-skeletor"
   },
   "keywords": [
     "react",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/react": "^15.0.25",
     "@types/react-dom": "^15.5.0",
+    "@types/react-router": "^3.0.11",
     "ts-loader": "^2.1.0",
     "typescript": "^2.3.3",
     "webpack": "^2.6.0",
@@ -25,6 +26,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-live": "^1.5.2",
+    "react-router": "^3.0.5",
     "styled-components": "^1.4.6"
   }
 }

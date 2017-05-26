@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createSkeletonProvider } from 'react-skeletor';
 
-import { UserCard } from '../../index';
+import { UserCard } from '../../data';
 
 import { Avatar, Content, FirstName, LastName, Container, Description, Name } from './CardStyledComponents.styles';
 
