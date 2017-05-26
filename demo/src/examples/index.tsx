@@ -1,11 +1,15 @@
 import * as React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import CardStyledComponents from '../components/CardStyledComponents/CardStyledComponents';
 import CardInlineStyles from '../components/CardInlineStyles/CardInlineStyles';
 import CardCSS from '../components/CardCSS/CardCSS';
 import data, { ApplicationState } from '../data';
 
 const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 10000002500));
+
+const Container = styled.div`
+  margin-top: 40px;
+`;
 
 class Home extends React.Component<{}, ApplicationState> {
   state = {} as ApplicationState;
@@ -16,11 +20,11 @@ class Home extends React.Component<{}, ApplicationState> {
 
   render() {
     return (
-      <div>
+      <Container>
         <CardInlineStyles card={this.state.cardA}/>
         <CardStyledComponents card={this.state.cardB} title="A title"/>
         <CardCSS card={this.state.cardC}/>
-      </div>
+      </Container>
     );
   }
 }

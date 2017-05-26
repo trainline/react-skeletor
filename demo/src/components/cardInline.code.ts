@@ -13,10 +13,8 @@ const dummyData = {
 
 export default createSkeletonProvider(
   dummyData,
-
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,
-
   // Pass down pending style
   {
     style: {
