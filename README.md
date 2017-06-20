@@ -61,4 +61,4 @@ export default NameCard;
 ```
 
 ### Contribute
-Before opening any Pull Request please post an issue explaining the problem so that the team can evaluate if the Pull Request is relevant.
+Before opening any Pull Request please [post an issue](https://github.com/trainline/react-skeletor/issues/new) explaining the problem so that the team can evaluate if the Pull Request is relevant.
