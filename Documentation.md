@@ -40,7 +40,7 @@ export default createSkeletonProvider(
 ```
 
 ### createSkeletonElement
-Factory function which create skeleton React components. Return a High Order Component that get props passed down
+Factory function which creates skeleton React components. Return a High Order Component that get props passed down
 
 #### Signature
 ```ts
@@ -62,7 +62,7 @@ const MyStatelessComponent = ({ username }) => (
 ```
 
 ### Div, Span, H1, H2, H3, H4, H5, P, Img
-Create a bunch of Html tag for you using `createSkeletonElement`
+Creates a series of Html elements for you using the `createSkeletonElement` factory.
 
 #### Signature
 ```ts

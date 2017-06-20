@@ -61,6 +61,4 @@ export default NameCard;
 ```
 
 ### Contribute
-
-Before opening any Pull Request please post an issue to ask if the changes are relevants.
-This project has adopted the [Trainline code of conduct](/CODE_OF_CONDUCT.md)
+Before opening any Pull Request please post an issue explaining the problem so that the team can evaluate if the Pull Request is relevant.
