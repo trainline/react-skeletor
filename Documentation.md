@@ -1,5 +1,5 @@
 ### createSkeletonProvider
-High Order Function which define the loading state of your app and inject the dummy data to your children components.
+High Order Function which defines the loading state of your app and inject the dummy data to your children components.
 
 #### Signature
 ```ts
