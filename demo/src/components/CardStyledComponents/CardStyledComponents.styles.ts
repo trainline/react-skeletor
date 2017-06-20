@@ -1,3 +1,8 @@
+/*
+* Copyright (c) Trainline Limited, 2017. All rights reserved.
+* See LICENSE.txt in the project root for license information.
+*/
+
 import styled from 'styled-components';
 import { createSkeletonElement } from 'react-skeletor';
 

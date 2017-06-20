@@ -1,3 +1,8 @@
+/*
+* Copyright (c) Trainline Limited, 2017. All rights reserved.
+* See LICENSE.txt in the project root for license information.
+*/
+
 import * as React from 'react';
 import { LiveProvider, LiveEditor } from 'react-live';
 import cardInlineCode from './cardInline.code';
