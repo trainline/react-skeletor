@@ -48,16 +48,14 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
 
 const pendingColor = '#bdc3c7';
 
-export default createSkeletonProvider<PendingProps, Props>(
+export default createSkeletonProvider(
   dummyData,
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,
   // Pass down pending style
   {
-    style: {
-      backgroundColor: pendingColor,
-      color: pendingColor,
-      borderColor: pendingColor,
-    },
+    backgroundColor: pendingColor,
+    color: pendingColor,
+    borderColor: pendingColor,
   }
 )(Card);

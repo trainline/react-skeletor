@@ -91,7 +91,5 @@ export default createSkeletonProvider(
   ({ card }: Props) => card === undefined,
 
   // Pass down pending style
-  {
-    className: 'pending',
-  }
+  'pending'
 )(Card);

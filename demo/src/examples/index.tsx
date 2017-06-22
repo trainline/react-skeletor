@@ -10,7 +10,7 @@ import CardInlineStyles from '../components/CardInlineStyles/CardInlineStyles';
 import CardCSS from '../components/CardCSS/CardCSS';
 import data, { ApplicationState } from '../data';
 
-const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 10000002500));
+const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 2000));
 
 const Container = styled.div`
   margin-top: 40px;

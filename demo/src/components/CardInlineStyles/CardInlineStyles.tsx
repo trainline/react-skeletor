@@ -50,10 +50,8 @@ export default createSkeletonProvider(
 
   // Pass down pending style
   {
-    style: {
-      backgroundColor: pendingColor,
-      color: pendingColor,
-      borderColor: pendingColor,
-    }
+    backgroundColor: pendingColor,
+    color: pendingColor,
+    borderColor: pendingColor,
   }
 )(Card);

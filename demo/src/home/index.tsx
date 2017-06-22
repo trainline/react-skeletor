@@ -9,7 +9,7 @@ import CardCode from '../components/cardCode';
 import data, { ApplicationState } from '../data';
 import { storm } from '../colors';
 
-const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 10000002500));
+const fakeAPI = () => new Promise<ApplicationState>((resolve, reject) => setTimeout(() => resolve(data), 2000));
 
 const P = styled.p`
   font-size: 20px;

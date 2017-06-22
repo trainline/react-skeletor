@@ -38,20 +38,21 @@ const Header = styled.header`
   padding: 20px;
 `;
 
-let selected = 0;
-
+const { pathname } = browserHistory.getCurrentLocation();
 const paths = [
   '/',
   '/demo'
 ];
+
+let selected = pathname === paths[0] ? 0 : 1;
 
 const Root: React.StatelessComponent<void> = ({ children }) => (
   <div>
     <Header>
       <Title>React-skeletor</Title>
       <Nav>
-        <StyledLink selected={selected === 0} onClick={() => selected = 0} to="/">Home</StyledLink>
-        <StyledLink selected={selected === 1} onClick={() => selected = 1} to="/demo">Examples</StyledLink>
+        <StyledLink selected={selected === 0} onClick={() => selected = 0} to={paths[0]}>Home</StyledLink>
+        <StyledLink selected={selected === 1} onClick={() => selected = 1} to={paths[1]}>Examples</StyledLink>
         <ExternalLink target="_blank" href="https://github.com/trainline/react-skeletor">Github</ExternalLink>
       </Nav>
     </Header>

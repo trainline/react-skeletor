@@ -14,10 +14,11 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.tsx']
   },
+  devtool: 'source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/assets',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist',
   },
   module: {
     loaders: [
@@ -32,10 +33,10 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(env)
       }
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    contentBase: path.resolve(__dirname),
     historyApiFallback: true
   }
 };
