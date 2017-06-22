@@ -1,5 +1,5 @@
 {
-  "name": "react-skeletor",
+  "name": "@trainline/react-skeletor",
   "version": "0.1.0",
   "description": "Make your application look nice when its loading!",
   "main": "lib/index.js",
@@ -12,10 +12,14 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "prepublish": "npm run clean && npm run build",
+    "deploy": "npm publish --access public",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
     "test": "jest --config test.config.json --no-cache",
     "test:watch": "jest --config test.config.json --watch"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/trainline/react-skeletor.git"
