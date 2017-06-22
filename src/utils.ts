@@ -2,8 +2,8 @@
 * Copyright (c) Trainline Limited, 2017. All rights reserved.
 * See LICENSE.txt in the project root for license information.
 */
-
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 export type AnyComponent<TProps, TState> = React.StatelessComponent<TProps>
   | (new() => React.Component<TProps, TState>)
@@ -13,14 +13,9 @@ export interface Pendable {
   isPending: boolean;
 }
 
-export interface Styling  {
-  style?: React.CSSProperties;
-  className?: string;
-}
-
 export interface SkeletorContext {
   isPending: boolean;
-  styling: Styling;
+  styling: React.CSSProperties | string;
 }
 
 export interface Context {
@@ -33,11 +28,11 @@ export const createSkeletonStyle = (color: string) => ({
 });
 
 export const contextTypes = {
-  skeletor: React.PropTypes.shape({
-    isPending: React.PropTypes.bool,
-    styling: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+  skeletor: PropTypes.shape({
+    isPending: PropTypes.bool,
+    styling: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
   })
 };

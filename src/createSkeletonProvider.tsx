@@ -2,10 +2,9 @@
 * Copyright (c) Trainline Limited, 2017. All rights reserved.
 * See LICENSE.txt in the project root for license information.
 */
-
 import * as React from 'react';
 
-import { AnyComponent, Styling, contextTypes } from './utils';
+import { AnyComponent, contextTypes } from './utils';
 
 export type DummyFn<TProps> = (props: TProps) => TProps;
 export type DummyData<TProps> = TProps | DummyFn<TProps>;
@@ -13,7 +12,7 @@ export type DummyData<TProps> = TProps | DummyFn<TProps>;
 export function createSkeletonProvider<TPendingProps, TProps extends TPendingProps = TPendingProps>(
   dummyData: DummyData<TPendingProps>,
   predicate: (props: TPendingProps) => boolean,
-  styling?: Styling,
+  styling?: React.CSSProperties | string,
 ) {
   return function(WrappedComponent: AnyComponent<TProps, void>): React.ComponentClass<TPendingProps> {
 
