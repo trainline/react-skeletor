@@ -1,3 +1,8 @@
+[![npm](https://img.shields.io/npm/v/@trainline/react-skeletor.svg)](https://www.npmjs.com/package/@trainline/react-skeletor)
+[![license](https://img.shields.io/github/license/trainline/react-skeletor.svg)](https://github.com/trainline/react-skeletor/blob/master/LICENSE.md)
+[![Travis](https://img.shields.io/travis/trainline/react-skeletor.svg)]()
+[![npm](https://img.shields.io/npm/dm/@trainline/react-skeletor.svg)](https://www.npmjs.com/package/@trainline/react-skeletor)
+
 # React Skeletor
 
 ![React-skeletor gif](/react-skeletor.gif)
