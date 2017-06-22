@@ -14,9 +14,12 @@ const StyledProvider: any = styled(LiveProvider as any)`
  margin: auto;
 `;
 
+// tslint:disable-next-line:no-any
+const Editor = LiveEditor as any;
+
 const CardCode = () => (
   <StyledProvider code={cardInlineCode}>
-    <LiveEditor contentEditable={false}/>
+    <Editor contentEditable={false}/>
   </StyledProvider>
 );
 

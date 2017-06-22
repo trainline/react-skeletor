@@ -14,8 +14,8 @@ module.exports = {
     extensions: ['.ts', '.js', '.tsx']
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './dist/assets'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist'),
     publicPath: '/assets',
   },
   module: {
@@ -27,6 +27,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './src'),
+    contentBase: path.resolve(__dirname),
+    historyApiFallback: true
   },
 };

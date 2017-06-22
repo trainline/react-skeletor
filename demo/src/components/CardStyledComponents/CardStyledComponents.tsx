@@ -4,7 +4,7 @@
 */
 
 import * as React from 'react';
-import { createSkeletonProvider } from 'react-skeletor';
+import { createSkeletonProvider } from '../../../../';
 
 import { UserCard } from '../../data';
 

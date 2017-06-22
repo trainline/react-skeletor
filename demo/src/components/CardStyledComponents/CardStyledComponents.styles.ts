@@ -4,7 +4,7 @@
 */
 
 import styled from 'styled-components';
-import { createSkeletonElement } from 'react-skeletor';
+import { createSkeletonElement } from '../../../../';
 
 export const Container = styled.div`
   display: flex;

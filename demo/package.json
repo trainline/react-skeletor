@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server",
-    "postinstall": "npm run link",
-    "link": "cd ../ && npm link && cd - && npm link react-skeletor"
+    "build": "webpack"
   },
   "keywords": [
     "react",
