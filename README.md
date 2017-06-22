@@ -26,7 +26,7 @@ npm install @trainline/react-skeletor
 ```jsx
 // UserDetailPage.js
 
-import { createSkeltonProvider } from 'react-skeletor';
+import { createSkeltonProvider } from '@trainline/react-skeletor';
 
 const UserDetailPage = ({ user }) => (
   <div>
@@ -36,7 +36,7 @@ const UserDetailPage = ({ user }) => (
   </div>
 )
 
-export default createSkeltonProvider(
+export default createSkeletonProvider(
   // Dummy data with a similar shape to your component's data
   {
     firstName: '_____',
@@ -52,7 +52,7 @@ export default createSkeltonProvider(
 ```jsx
 // NameCard.js
 
-import { h1 as SkeletonH1, h2 as SkeletonH2 } from 'react-skeletor';
+import { h1 as SkeletonH1, h2 as SkeletonH2 } from '@trainline/react-skeletor';
 
 const NameCard = ({ firstName, lastName }) => (
   <div>

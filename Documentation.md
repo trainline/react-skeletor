@@ -18,7 +18,7 @@ const createSkeletonProvider = <TPendingProps, TProps extends TPendingProps = TP
 
 #### Example
 ```js
-import { createSkeletonProvider } from 'react-skeletor';
+import { createSkeletonProvider } from '@trainline/react-skeletor';
 
 export default createSkeletonProvider(
   (props) => ({
@@ -30,11 +30,9 @@ export default createSkeletonProvider(
 
   // Pass down pending style
   {
-    style: {
-      backgroundColor: 'grey',
-      color: 'grey',
-      borderColor: 'grey',
-    }
+    backgroundColor: 'grey',
+    color: 'grey',
+    borderColor: 'grey',
   }
 )(Card);
 ```
@@ -45,14 +43,14 @@ Factory function which creates skeleton React components. Return a High Order Co
 #### Signature
 ```ts
 const createSkeletonElement =
-(type: React.ClassType<P, T, C> | string ) => JSX.Element
+(type: React.ClassType<P, T, C> | string, pendingStyle?: React.CSSProperties | string) => JSX.Element
 ```
 
 - type: Either a Component class or a string that get passed to React.CreateElement to create your skeleton high order component
 
 #### Example
 ```js
-import { createSkeletonElement } from 'react-skeletor';
+import { createSkeletonElement } from '@trainline/react-skeletor';
 
 const SkeletonLoadingDiv = createSkeletonElement('div');
 
@@ -71,7 +69,7 @@ JSX.Element<any>
 
 #### Example
 ```js
-import { Div as SkeletonDiv } from 'react-skeletor';
+import { Div as SkeletonDiv } from '@trainline/react-skeletor';
 
 const myStatelessComponent = ({ username }) => (
   <SkeletonDiv>{username}</SkeletonDiv>
