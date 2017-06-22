@@ -31,9 +31,7 @@ describe('createSkeletonElement', () => {
     }, (skeletor) => ({
       skeletor: {
         isPending: true,
-        styling: {
-          style: { left: 0, right: 0, top: 0, bottom: 0 }
-        }
+        styling: { left: 0, right: 0, top: 0, bottom: 0 }
       }
     }))(createSkeletonElement('div'));
     const wrapper = mount(<DivWithContext style={{ position: 'absolute' }}/>);
@@ -53,9 +51,7 @@ describe('createSkeletonElement', () => {
     }, (skeletor) => ({
       skeletor: {
         isPending: true,
-        styling: {
-          className: 'helloWorld'
-        }
+        styling: 'helloWorld'
       }
     }))(createSkeletonElement('div'));
     const wrapper = mount(<DivWithContext className="anotherHelloWorld"/>);
