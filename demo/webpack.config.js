@@ -2,8 +2,9 @@
 * Copyright (c) Trainline Limited, 2017. All rights reserved.
 * See LICENSE.txt in the project root for license information.
 */
-
+const webpack = require('webpack');
 const path = require('path');
+const env = process.env.NODE_ENV;
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -26,8 +27,15 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(env)
+      }
+    })
+  ],
   devServer: {
     contentBase: path.resolve(__dirname),
     historyApiFallback: true
-  },
+  }
 };

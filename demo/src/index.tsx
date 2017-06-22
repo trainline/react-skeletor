@@ -2,7 +2,6 @@
 * Copyright (c) Trainline Limited, 2017. All rights reserved.
 * See LICENSE.txt in the project root for license information.
 */
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, Link, IndexRoute } from 'react-router';
@@ -41,6 +40,11 @@ const Header = styled.header`
 
 let selected = 0;
 
+const paths = [
+  '/',
+  '/demo'
+];
+
 const Root: React.StatelessComponent<void> = ({ children }) => (
   <div>
     <Header>
@@ -60,9 +64,9 @@ const Root: React.StatelessComponent<void> = ({ children }) => (
 function render() {
   ReactDOM.render(
     <Router history={browserHistory}>
-      <Route path="/" component={Root}>
+      <Route path={paths[0]} component={Root}>
         <IndexRoute component={Home}/>
-        <Route path="/demo" component={Examples}/>
+        <Route path={paths[1]} component={Examples}/>
       </Route>
     </Router>,
     document.getElementById('root')
