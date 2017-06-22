@@ -13,7 +13,7 @@ Display a skeleton preview of your application's content before the data get loa
 1. Install via npm
 
 ```
-npm install react-skeletor
+npm install @trainline/react-skeletor
 ```
 
 2. Wrap your component (often a container) with the `createSkeletonProvider` high order component. This adds the pending status and style into the [context](https://facebook.github.io/react/docs/context.html).
