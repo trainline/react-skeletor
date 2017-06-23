@@ -43,7 +43,12 @@ export default createSkeletonProvider(
     lastName: '________'
   },
   // Predicate specifying whether or not your data is loaded
-  ({ user }) => user === undefined
+  ({ user }) => user === undefined,
+  // Define the placeholder design for our children elements,
+  () => ({
+    color: 'grey',
+    backgroundColor: 'grey'
+  })
 )(UserDetailPage);
 ```
 
