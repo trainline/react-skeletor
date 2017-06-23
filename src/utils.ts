@@ -15,7 +15,7 @@ export interface Pendable {
 
 export interface SkeletorContext {
   isPending: boolean;
-  styling: React.CSSProperties | string;
+  styling: () => React.CSSProperties | string;
 }
 
 export interface Context {
@@ -30,9 +30,6 @@ export const createSkeletonStyle = (color: string) => ({
 export const contextTypes = {
   skeletor: PropTypes.shape({
     isPending: PropTypes.bool,
-    styling: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-    ]),
+    styling: PropTypes.func
   })
 };

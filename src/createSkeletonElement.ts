@@ -23,19 +23,26 @@ export const createSkeletonElement = <
  ) => {
   const ExportedComponent: React.StatelessComponent<any> = ( // tslint:disable-line
     props: any, { skeletor: { isPending, styling } }: Context // tslint:disable-line
-  ) => React.createElement(type as any, { // tslint:disable-line
-    ...props,
-    style: isPending ? createStyle([
-      props.style,
-      typeof styling !== 'string' && styling,
-      typeof pendingStyle !== 'string' && pendingStyle
-    ]) : undefined,
-    className: isPending ? createClassName([
-      props.className,
-      typeof styling === 'string' && styling,
-      typeof pendingStyle === 'string' && pendingStyle
-    ]) : undefined
-  });
+  ) => {
+    let newProps = { ...props};
+    if (isPending) {
+      const contextStyle = typeof styling === 'function' ? styling() : undefined;
+
+      newProps.style = createStyle([
+        props.style,
+        typeof contextStyle !== 'string' && contextStyle,
+        typeof pendingStyle !== 'string' && pendingStyle
+      ]);
+
+      newProps.className = createClassName([
+        props.className,
+        typeof contextStyle === 'string' && contextStyle,
+        typeof pendingStyle === 'string' && pendingStyle
+      ]);
+    }
+    // tslint:disable-next-line:no-any
+    return React.createElement(type as any, newProps);
+  };
 
   ExportedComponent.contextTypes = contextTypes;
 
