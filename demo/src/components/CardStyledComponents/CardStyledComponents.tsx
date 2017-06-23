@@ -33,16 +33,6 @@ export interface Props extends PendingProps {
 
 export const Card: React.StatelessComponent<Props> = ({ card }) => (
   <Container>
-    <style
-      dangerouslySetInnerHTML={{ __html: `
-        .skeletor-animation {
-          animation-name: skeletonAnimation;
-          animation-duration: 1.5s;
-          animation-iteration-count: infinite;
-          animation-timing-function: linear;
-        }
-      `}}
-    />
     <Avatar src={card.avatar} />
     <Content>
       <FirstName>
@@ -56,16 +46,8 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
   </Container>
 );
 
-const pendingColor = '#bdc3c7';
-
 export default createSkeletonProvider(
   dummyData,
   // Declare pending state if data is undefined
-  ({ card }: Props) => card === undefined,
-  // Pass down pending style
-  {
-    backgroundColor: pendingColor,
-    color: pendingColor,
-    borderColor: pendingColor,
-  }
+  ({ card }: Props) => card === undefined
 )(Card);

@@ -13,7 +13,7 @@ export const Container = styled.div`
   border: 1px solid  #ddd;
 `;
 
-const loading = 'skeletor-animation';
+const loading = 'pending';
 
 export const Name = createSkeletonElement(styled.span``, loading);
 

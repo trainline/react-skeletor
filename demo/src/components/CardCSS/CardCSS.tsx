@@ -86,10 +86,8 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
 
 export default createSkeletonProvider(
   dummyData,
-
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,
-
   // Pass down pending style
-  'pending'
+  () => 'pending'
 )(Card);
