@@ -26,7 +26,7 @@ npm install @trainline/react-skeletor
 ```jsx
 // UserDetailPage.js
 
-import { createSkeltonProvider } from '@trainline/react-skeletor';
+import { createSkeletonProvider } from '@trainline/react-skeletor';
 
 const UserDetailPage = ({ user }) => (
   <div>
@@ -44,7 +44,7 @@ export default createSkeletonProvider(
   },
   // Predicate specifying whether or not your data is loaded
   ({ user }) => user === undefined,
-  // Define the placeholder design for our children elements,
+  // Define the placeholder design for your children elements,
   () => ({
     color: 'grey',
     backgroundColor: 'grey'
