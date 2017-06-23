@@ -33,6 +33,16 @@ export interface Props extends PendingProps {
 
 export const Card: React.StatelessComponent<Props> = ({ card }) => (
   <Container>
+    <style
+      dangerouslySetInnerHTML={{ __html: `
+        .skeletor-animation {
+          animation-name: skeletonAnimation;
+          animation-duration: 1.5s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+      `}}
+    />
     <Avatar src={card.avatar} />
     <Content>
       <FirstName>

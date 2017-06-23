@@ -13,22 +13,15 @@ export const Container = styled.div`
   border: 1px solid  #ddd;
 `;
 
-export const Name = createSkeletonElement(styled.span`
-  animation-name: skeletonAnimation;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-`);
+const loading = 'skeletor-animation';
+
+export const Name = createSkeletonElement(styled.span``, loading);
 
 export const Avatar = createSkeletonElement(styled.img`
   display: block;
   width: 150px;
   height: 150px;
-  animation-name: skeletonAnimation;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-`);
+`, loading);
 
 export const Content = styled.div`
   backgroundColor: #f0f0f0;
@@ -48,10 +41,6 @@ export const LastName = styled.h3`
 `;
 
 export const Description = createSkeletonElement(styled.div`
-  color: #95a5a6;
+  color: #34495e;
   marginTop: 10px;
-  animation-name: skeletonAnimation;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-`);
+`, loading);
