@@ -7,9 +7,14 @@
 
 ![React-skeletor gif](/react-skeletor.gif)
 
-## Skeleton preview for React components
+Display a skeleton preview of the application's content before the data get loaded.
 
-Display a skeleton preview of your application's content before the data get loaded
+## How it works
+![React-skeletor gif](/blog_posts.png)
+
+Red box: Component `createSkeletonProvider` responsible for injecting the dummy data in order to make sure you render all the nested components. The number of characters of the properties of the injected dummy data is going to define the length of your placeholder designs.
+
+Green box: Component `createSkeletonElement` should wrap a leaf component (title, description, image...), it will switch between the placeholder design defined as a third parameter of `createSkeletonProvider` or second parameter of `createSkeletonElement` and the content of the data.
 
 ## [Documentation](Documentation.md)
 
@@ -21,10 +26,10 @@ Display a skeleton preview of your application's content before the data get loa
 npm install @trainline/react-skeletor
 ```
 
-2. Wrap your component (often a container) with the `createSkeletonProvider` high order component. This adds the pending status and style into the [context](https://facebook.github.io/react/docs/context.html).
+2. Wrap the component (often a container) with the `createSkeletonProvider` high order component. This adds the loading status and style into the [context](https://facebook.github.io/react/docs/context.html) and inject fake data in the components subtree.
 
 ```jsx
-// UserDetailPage.js
+// UserDetailPage.jsx
 
 import { createSkeletonProvider } from '@trainline/react-skeletor';
 
@@ -37,14 +42,14 @@ const UserDetailPage = ({ user }) => (
 )
 
 export default createSkeletonProvider(
-  // Dummy data with a similar shape to your component's data
+  // Dummy data with a similar shape to the component's data
   {
     firstName: '_____',
     lastName: '________'
   },
-  // Predicate specifying whether or not your data is loaded
+  // Predicate specifying whether or not the data is loaded
   ({ user }) => user === undefined,
-  // Define the placeholder design for your children elements,
+  // Define the placeholder design for the children elements,
   () => ({
     color: 'grey',
     backgroundColor: 'grey'
@@ -52,17 +57,20 @@ export default createSkeletonProvider(
 )(UserDetailPage);
 ```
 
-3. Use a skeleton element to magically style your component when data is pending with zero effort!
+3. Use a skeleton element to toggle between the placehoder design and the real content depending on the loading status in the context.
 
 ```jsx
-// NameCard.js
+// NameCard.jsx
 
-import { h1 as SkeletonH1, h2 as SkeletonH2 } from '@trainline/react-skeletor';
+import { createSkeletonElement } from '@trainline/react-skeletor';
+
+const H1 = createSkeletonElement('h1');
+const H2 = createSkeletonElement('h2');
 
 const NameCard = ({ firstName, lastName }) => (
   <div>
-    <SkeletonH1 style={style}>{ firstName }</SkeletonH1>
-    <SkeletonH2 style={style}>{ lastName }</SkeletonH2>
+    <H1 style={style}>{ firstName }</H1>
+    <H2 style={style}>{ lastName }</H2>
   </div>
 )
 
