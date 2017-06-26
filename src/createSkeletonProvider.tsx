@@ -3,8 +3,7 @@
 * See LICENSE.txt in the project root for license information.
 */
 import * as React from 'react';
-
-import { AnyComponent, contextTypes } from './utils';
+import { contextTypes } from './utils';
 
 export type DummyFn<TProps> = (props: TProps) => TProps;
 export type DummyData<TProps> = TProps | DummyFn<TProps>;
@@ -14,7 +13,12 @@ export function createSkeletonProvider<TPendingProps, TProps extends TPendingPro
   predicate: (props: TPendingProps) => boolean,
   styling?: React.CSSProperties | string,
 ) {
-  return function(WrappedComponent: AnyComponent<TProps, void>): React.ComponentClass<TPendingProps> {
+  return function(
+    // tslint:disable-next-line:max-line-length
+    // tslint:disable-next-line:no-any
+    WrappedComponent: React.ClassType<TProps, any, any> | React.SFC<TProps>
+  // tslint:disable-next-line:no-any
+  ): React.ClassType<TProps, any, any> {
 
     class ExportedComponent extends React.Component<TPendingProps, void> {
 
@@ -38,19 +42,18 @@ export function createSkeletonProvider<TPendingProps, TProps extends TPendingPro
 
           // TODO: fix with typescript 2.4
           return React.createElement(
-            WrappedComponent as React.ComponentClass<TProps>,
+            WrappedComponent,
             Object.assign({}, props, data) as TProps
           );
         }
 
         // TODO: fix with typescript 2.4
         return React.createElement(
-          WrappedComponent  as React.ComponentClass<TProps>,
+          WrappedComponent,
           props as TProps
         );
       }
     }
-
 
     return ExportedComponent;
   };
