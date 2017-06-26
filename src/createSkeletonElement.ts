@@ -22,8 +22,15 @@ export const createSkeletonElement = <
   pendingStyle?: React.CSSProperties | string
  ) => {
   const ExportedComponent: React.StatelessComponent<any> = ( // tslint:disable-line
-    props: any, { skeletor: { isPending, styling } }: Context // tslint:disable-line
+    props: any, { skeletor }: Context // tslint:disable-line
   ) => {
+    let isPending;
+    let styling;
+    if (skeletor) {
+      isPending = skeletor.isPending;
+      styling = skeletor.styling;
+    }
+
     let newProps = { ...props};
     if (isPending) {
       const contextStyle = typeof styling === 'function' ? styling() : undefined;
