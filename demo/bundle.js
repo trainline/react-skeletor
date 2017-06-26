@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "98ca86b223bded0c8f7f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "11d2b43654c9057b3a15"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -55280,8 +55280,8 @@ var ExternalLink = (_d = ["\n  margin: 0px 8px;\n  color: ", ";\n  text-decorati
 var Header = (_e = ["\n  padding: 20px;\n"], _e.raw = ["\n  padding: 20px;\n"], styled_components_1.default.header(_e));
 var pathname = react_router_1.browserHistory.getCurrentLocation().pathname;
 var paths = [
-    NODE_ENV === 'prod' ? '/react-skeletor' : '/',
-    NODE_ENV === 'prod' ? '/react-skeletor/demo' : '/demo'
+    NODE_ENV === 'prod' ? '/react-skeletor/' : '/',
+    NODE_ENV === 'prod' ? '/react-skeletor/demo/' : '/demo'
 ];
 var selected = pathname === paths[0] ? 0 : 1;
 var Root = function (_a) {
