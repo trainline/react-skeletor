@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "11d2b43654c9057b3a15"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4ecf6e53d56a574f9b99"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -55252,7 +55252,7 @@ var _a;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = "import * as React from 'react';\nimport { createSkeletonProvider, Div } from 'react-skeletor';\n\nexport const Card = ({ card }) => (\n  <Div className=\"pending\">{card.description}</Div>\n);\n\nconst dummyData = {\n  card: {\n    description: 'TTTTTT'\n  }\n};\n\nexport default createSkeletonProvider(\n  dummyData,\n  // Declare pending state if data is undefined\n  ({ card }: Props) => card === undefined,\n  // Pass down pending style\n  {\n    style: {\n      backgroundColor: '#bdc3c7',\n      color: '#bdc3c7',\n      borderColor: '#bdc3c7',\n    }\n  }\n)(Card);\n";
+exports.default = "import * as React from 'react';\nimport { createSkeletonProvider, Div } from 'react-skeletor';\n\nexport const Card = ({ card }) => (\n  <Div className=\"pending\">{card.description}</Div>\n);\n\nconst dummyData = {\n  card: {\n    description: 'TTTTTT'\n  }\n};\n\nexport default createSkeletonProvider(\n  dummyData,\n  // Declare pending state if data is undefined\n  ({ card }: Props) => card === undefined,\n  // Pass down pending style\n  () => ({\n    backgroundColor: '#bdc3c7',\n    color: '#bdc3c7'\n  })\n)(Card);\n";
 
 
 /***/ }),
