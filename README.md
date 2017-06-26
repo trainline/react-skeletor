@@ -9,6 +9,8 @@
 
 Display a skeleton preview of the application's content before the data get loaded.
 
+## [Demo](https://trainline.github.io/react-skeletor)
+
 ## How it works
 ![React-skeletor gif](/blog_posts.png)
 
