@@ -21,12 +21,9 @@ export default createSkeletonProvider(
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,
   // Pass down pending style
-  {
-    style: {
-      backgroundColor: '#bdc3c7',
-      color: '#bdc3c7',
-      borderColor: '#bdc3c7',
-    }
-  }
+  () => ({
+    backgroundColor: '#bdc3c7',
+    color: '#bdc3c7'
+  })
 )(Card);
 `;
