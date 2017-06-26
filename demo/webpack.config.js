@@ -4,6 +4,8 @@
 */
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const env = process.env.NODE_ENV;
 
 module.exports = {
@@ -18,7 +20,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist',
   },
   module: {
     loaders: [
@@ -34,7 +35,11 @@ module.exports = {
         NODE_ENV: JSON.stringify(env)
       }
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'React-skeletor example website',
+      template: '../index.ejs',
+    })
   ],
   devServer: {
     historyApiFallback: true

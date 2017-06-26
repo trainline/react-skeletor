@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Examples from './examples';
 import Home from './home';
 import { navy, storm, mint } from './colors';
+const { NODE_ENV } = process.env;
 
 const Title = styled.h1`
   font-family: 'open-sans', sans-serif;
@@ -40,8 +41,8 @@ const Header = styled.header`
 
 const { pathname } = browserHistory.getCurrentLocation();
 const paths = [
-  '/',
-  '/demo'
+  NODE_ENV === 'prod' ? '/react-skeletor/' : '/',
+  NODE_ENV === 'prod' ? '/react-skeletor/demo/' : '/demo'
 ];
 
 let selected = pathname === paths[0] ? 0 : 1;
