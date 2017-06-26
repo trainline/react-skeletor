@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "534b5b329d85432940e8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "700174f73e1666e0d91d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -55269,6 +55269,7 @@ var styled_components_1 = __webpack_require__(33);
 var examples_1 = __webpack_require__(143);
 var home_1 = __webpack_require__(144);
 var colors_1 = __webpack_require__(82);
+var NODE_ENV = "prod";
 var Title = (_a = ["\n  font-family: 'open-sans', sans-serif;\n  font-size: 46px;\n  text-align: center;\n  color: ", ";\n  margin-bottom: 10px\n"], _a.raw = ["\n  font-family: 'open-sans', sans-serif;\n  font-size: 46px;\n  text-align: center;\n  color: ", ";\n  margin-bottom: 10px\n"], styled_components_1.default.h1(_a, colors_1.navy));
 var Nav = (_b = ["\n  text-align: center;\n"], _b.raw = ["\n  text-align: center;\n"], styled_components_1.default.nav(_b));
 var StyledLink = (_c = ["\n  margin: 0px 8px;\n  color: ", ";\n  text-decoration: none;\n"], _c.raw = ["\n  margin: 0px 8px;\n  color: ", ";\n  text-decoration: none;\n"], styled_components_1.default(react_router_1.Link)(_c, function (_a) {
@@ -55279,8 +55280,8 @@ var ExternalLink = (_d = ["\n  margin: 0px 8px;\n  color: ", ";\n  text-decorati
 var Header = (_e = ["\n  padding: 20px;\n"], _e.raw = ["\n  padding: 20px;\n"], styled_components_1.default.header(_e));
 var pathname = react_router_1.browserHistory.getCurrentLocation().pathname;
 var paths = [
-    '/',
-    '/demo'
+    NODE_ENV === 'prod' ? '/react-mapbox-gl' : '/',
+    NODE_ENV === 'prod' ? '/react-mapbox-gl/demo' : '/demo'
 ];
 var selected = pathname === paths[0] ? 0 : 1;
 var Root = function (_a) {
