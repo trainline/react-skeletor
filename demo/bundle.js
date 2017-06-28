@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3d592496dab4cd1c86b5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1a1e612b147a5041244d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -57440,7 +57440,7 @@ var StyledEditor = (_b = ["\n  font-family: 'Source Code Pro', monospace;\n  fon
 var StyledPreview = (_c = ["\n  flex: 1;\n  background-color: ", ";\n"], _c.raw = ["\n  flex: 1;\n  background-color: ", ";\n"], styled_components_1.default(react_live_1.LivePreview)(_c, colors_1.mint));
 var Container = (_d = ["\n  display: flex;\n  justify-content: center;\n  height: 100%;\n  align-items: center;\n"], _d.raw = ["\n  display: flex;\n  justify-content: center;\n  height: 100%;\n  align-items: center;\n"], styled_components_1.default.div(_d));
 var CardCode = function () { return (React.createElement(StyledProvider, { mountStylesheet: false, noInline: true, code: cardInline_code_1.default, scope: { createSkeletonElement: _1.createSkeletonElement, createSkeletonProvider: _1.createSkeletonProvider, Container: Container } },
-    React.createElement(StyledEditor, { contentEditable: false }),
+    React.createElement(StyledEditor, { contentEditable: true }),
     React.createElement(StyledPreview, null),
     React.createElement(react_live_1.LiveError, null))); };
 exports.default = CardCode;
