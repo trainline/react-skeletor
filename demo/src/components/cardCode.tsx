@@ -4,22 +4,46 @@
 */
 
 import * as React from 'react';
-import { LiveProvider, LiveEditor } from 'react-live';
+import { LiveProvider, LiveEditor, LivePreview, LiveError } from 'react-live';
 import cardInlineCode from './cardInline.code';
 import styled from 'styled-components';
+import { createSkeletonProvider, createSkeletonElement } from '../../../';
+import { mint } from '../colors';
 
-// tslint:disable-next-line
-const StyledProvider: any = styled(LiveProvider as any)`
- width: 50%;
- margin: auto;
+const StyledProvider = styled(LiveProvider)`
+  margin: auto;
+  display: flex;
+  justify-content: center;
 `;
 
-// tslint:disable-next-line:no-any
-const Editor = LiveEditor as any;
+const StyledEditor = styled(LiveEditor)`
+  font-family: 'Source Code Pro', monospace;
+  font-size: 13px;
+  line-height: 18px;
+` as any; // tslint:disable-line:no-any
+
+const StyledPreview = styled(LivePreview)`
+  flex: 1;
+  background-color: ${mint};
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+`;
 
 const CardCode = () => (
-  <StyledProvider code={cardInlineCode}>
-    <Editor contentEditable={false}/>
+  <StyledProvider
+    mountStylesheet={false}
+    noInline={true}
+    code={cardInlineCode}
+    scope={{ createSkeletonElement, createSkeletonProvider, Container }}
+  >
+    <StyledEditor contentEditable={false}/>
+    <StyledPreview/>
+    <LiveError/>
   </StyledProvider>
 );
 

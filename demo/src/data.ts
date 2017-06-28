@@ -3,42 +3,34 @@
 * See LICENSE.txt in the project root for license information.
 */
 
-export interface UserCard {
-  firstName: string;
-  lastName: string;
+export interface Card {
+  title: string;
   description: string;
   avatar: string;
-  isPending?: boolean;
 }
 
 export interface ApplicationState {
-  cardA: UserCard;
-  cardB: UserCard;
-  cardC: UserCard;
+  cardA?: Card;
+  cardB?: Card;
+  cardC?: Card;
 }
 
 // Fake API
 const data: ApplicationState = {
   cardA: {
-    firstName: 'Alex',
-    lastName: 'Rieux',
+    title: 'The simpsons',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur metus in nibh porttitor ultricies. Vestibulum placerat blandit interdum.', //tslint:disable-line
-    avatar: 'http://placehold.it/150x150',
-    isPending: true,
+    avatar: 'http://lorempicsum.com/simpsons/255/200/2'
   },
   cardB: {
-    firstName: 'Jamie',
-    lastName: 'Copeland',
+    title: 'Futurama',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur metus in nibh porttitor ultricies. Vestibulum placerat blandit interdum.', //tslint:disable-line
-    avatar: 'http://placehold.it/150x150',
-    isPending: true,
+    avatar: 'http://lorempicsum.com/futurama/255/200/2'
   },
   cardC: {
-    firstName: 'Anonymous',
-    lastName: 'Contrubutor',
+    title: 'Up',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur metus in nibh porttitor ultricies. Vestibulum placerat blandit interdum.', //tslint:disable-line
-    avatar: 'http://placehold.it/150x150',
-    isPending: true,
+    avatar: 'http://lorempicsum.com/up/255/200/2'
   }
 };
 

@@ -6,41 +6,35 @@
 import * as React from 'react';
 import { createSkeletonProvider } from '../../../../';
 
-import { UserCard } from '../../data';
+import { Card } from '../../data';
 
-import { Avatar, Content, FirstName, LastName, Container, Description, Name } from './CardStyledComponents.styles';
+import { Avatar, Content, Title, Container, Description } from './CardStyledComponents.styles';
 
 const dummyData = {
   card: {
-    firstName: 'TTTTTTTT',
-    lastName: 'TTTTTTTTTT',
+    title: '________',
     description: `
-      TTT TTTTT TTT TTT T TTTTTTT TTT TTTTTT TTT TTT
-      TT TTTTT TTTTT TTTTT TTTTT TTTT`,
+      ___ _____ ___ ___ _ _______ ___ ______ ___ ___
+      __ _____ _____ _____ _____ ____`.trim(),
     avatar: ''
   },
   title: 'defaultTitle',
 };
 
 export interface PendingProps {
-  card?: UserCard;
+  card?: Card;
   title: string;
 }
 
 export interface Props extends PendingProps {
-  card: UserCard;
+  card: Card;
 }
 
-export const Card: React.StatelessComponent<Props> = ({ card }) => (
+export const CardComponent: React.StatelessComponent<Props> = ({ card }) => (
   <Container>
     <Avatar src={card.avatar} />
     <Content>
-      <FirstName>
-        <Name>{card.firstName}</Name>
-      </FirstName>
-      <LastName>
-        <Name>{card.lastName}</Name>
-      </LastName>
+      <Title>{card.title}</Title>
       <Description>{card.description}</Description>
     </Content>
   </Container>
@@ -49,5 +43,5 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
 export default createSkeletonProvider(
   dummyData,
   // Declare pending state if data is undefined
-  ({ card }: Props) => card === undefined
-)(Card);
+  (props: Props) => props.card === undefined
+)(CardComponent);

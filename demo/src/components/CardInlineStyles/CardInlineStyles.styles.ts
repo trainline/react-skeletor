@@ -2,13 +2,26 @@
 * Copyright (c) Trainline Limited, 2017. All rights reserved.
 * See LICENSE.txt in the project root for license information.
 */
+import { StyleSheet } from 'aphrodite/no-important';
 
-export default {
+const skeletonAnimation = {
+  '0%': {
+    opacity: 0.8
+  },
+  '50%': {
+    opacity: 0.4
+  },
+  '100%': {
+    opacity: 0.8
+  }
+};
+
+export default StyleSheet.create({
   container: {
     display: 'flex',
-    width: '80%',
     margin: 'auto',
-    border: '1px solid  #ddd'
+    border: '1px solid  #ddd',
+    borderRadius: '5px'
   },
   avatar: {
     display: 'block',
@@ -30,7 +43,16 @@ export default {
     margin: 0,
   },
   description: {
-    color: '#95a5a6',
+    color: '#34495e',
     marginTop: 10,
+  },
+  pending: {
+    backgroundColor: '#bdc3c7',
+    color: '#bdc3c7',
+    userSelect: 'none',
+    animationName: [skeletonAnimation],
+    animationDuration: '1.5s',
+    animationIterationCount: 'infinite',
+    animationTimingFunction: 'linear'
   }
-};
+});

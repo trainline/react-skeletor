@@ -6,24 +6,23 @@
 import * as React from 'react';
 import { createSkeletonProvider, Span, Img, Div } from '../../../../';
 
-import { UserCard } from '../../data';
+import { Card } from '../../data';
 
 const dummyData = {
   card: {
-    firstName: 'TTTTTTT',
-    lastName: 'TTTTTTTTTTTTTT',
+    title: '_______',
     description: `
-      TTTTTTT TTTTTTTTTTTTTTT TTTTTTT TTTTTTT TTTT
-      TTTTTTTTT `,
+      _______ _______________ _______ _______ ____
+      _________ `.trim(),
     avatar: ''
   }
 };
 
 export interface Props {
-  card: UserCard;
+  card: Card;
 }
 
-export const Card: React.StatelessComponent<Props> = ({ card }) => (
+export const CardComponent: React.StatelessComponent<Props> = ({ card }) => (
   <div>
     {/*
       Adding styles inline like this is not a good idea!
@@ -35,9 +34,9 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
       dangerouslySetInnerHTML={{ __html: `
         .card__container {
           display: flex;
-          width: 80%;
-          margin: 40px auto;
+          margin: auto;
           border: 1px solid #ddd;
+          border-radius: 5px;
         }
 
         .card__avatar {
@@ -64,7 +63,7 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
         }
 
         .card__description {
-          color: #95a5a6;
+          color: #34495e;
           margin-top: 10px;
         }
       ` }}
@@ -73,11 +72,8 @@ export const Card: React.StatelessComponent<Props> = ({ card }) => (
       <Img className="card__avatar" src={card.avatar} />
       <div className="card__content">
         <h1 className="card__first-name">
-          <Span>{card.firstName}</Span>
+          <Span>{card.title}</Span>
         </h1>
-        <h3 className="card__last-name">
-          <Span>{card.lastName}</Span>
-        </h3>
         <Div className="card__description">{card.description}</Div>
       </div>
     </div>
@@ -88,6 +84,6 @@ export default createSkeletonProvider(
   dummyData,
   // Declare pending state if data is undefined
   ({ card }: Props) => card === undefined,
-  // Pass down pending style
+  // Pass down pending className, defined in index.ejs of this project
   () => 'pending'
-)(Card);
+)(CardComponent);

@@ -8,14 +8,19 @@ import { createSkeletonElement } from '../../../../';
 
 export const Container = styled.div`
   display: flex;
-  width: 80%;
-  margin: 40px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border: 1px solid  #ddd;
+  border-radius: 5px;
 `;
 
+// loading Classname defined in index.ejs of the project
 const loading = 'pending';
 
-export const Name = createSkeletonElement(styled.span``, loading);
+export const Title = createSkeletonElement(styled.h1`
+  marginTop: 0;
+  marginBottom: 10;
+`, loading);
 
 export const Avatar = createSkeletonElement(styled.img`
   display: block;
@@ -29,15 +34,6 @@ export const Content = styled.div`
   color: #34495e;
   fontFamily: sans-serif;
   width: calc(100% - 150px);
-`;
-
-export const FirstName = styled.h1`
-  marginTop: 0;
-  marginBottom: 10;
-`;
-
-export const LastName = styled.h3`
-  margin: 0;
 `;
 
 export const Description = createSkeletonElement(styled.div`

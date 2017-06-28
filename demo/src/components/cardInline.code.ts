@@ -3,27 +3,23 @@
 * See LICENSE.txt in the project root for license information.
 */
 
-export default `import * as React from 'react';
-import { createSkeletonProvider, Div } from 'react-skeletor';
+export default `
+const Div = createSkeletonElement('div', 'pending-home');
 
-export const Card = ({ card }) => (
-  <Div className="pending">{card.description}</Div>
+const Card = (props) => (
+  <Container>
+    <Div>{props.card.description}</Div>
+  </Container>
 );
 
 const dummyData = {
   card: {
-    description: 'TTTTTT'
+    description: '___ _____ __ __ _______ ____'
   }
 };
+const pendingPredicate = (props) => props.card === undefined;
 
-export default createSkeletonProvider(
-  dummyData,
-  // Declare pending state if data is undefined
-  ({ card }: Props) => card === undefined,
-  // Pass down pending style
-  () => ({
-    backgroundColor: '#bdc3c7',
-    color: '#bdc3c7'
-  })
-)(Card);
-`;
+const App = createSkeletonProvider(dummyData, pendingPredicate)(Card);
+
+render(<App card={undefined}/>);
+`.trim();
