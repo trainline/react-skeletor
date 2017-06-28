@@ -41,7 +41,7 @@ const CardCode = () => (
     code={cardInlineCode}
     scope={{ createSkeletonElement, createSkeletonProvider, Container }}
   >
-    <StyledEditor contentEditable={false}/>
+    <StyledEditor contentEditable={true}/>
     <StyledPreview/>
     <LiveError/>
   </StyledProvider>
