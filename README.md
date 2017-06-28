@@ -8,15 +8,12 @@
 ![React-skeletor gif](/react-skeletor.gif)
 
 Display a skeleton preview of the application's content before the data get loaded.
+<br/>
+- Inject dummy data into the provider
+- Define your loading status with the provider
+- Wrap leaf component with `createSkeletorElement` and define the style of the component when it is pending. The component will do all the magic for you, it will turn on / off the pending design for you.
 
 ## [Demo](https://trainline.github.io/react-skeletor)
-
-## How it works
-![React-skeletor gif](/blog_posts.png)
-
-Red box: Component `createSkeletonProvider` responsible for injecting the dummy data in order to make sure you render all the nested components. The number of characters of the properties of the injected dummy data is going to define the length of your placeholder designs.
-
-Green box: Component `createSkeletonElement` should wrap a leaf component (title, description, image...), it will switch between the placeholder design defined as a third parameter of `createSkeletonProvider` or second parameter of `createSkeletonElement` and the content of the data.
 
 ## [Documentation](Documentation.md)
 
@@ -82,3 +79,5 @@ export default NameCard;
 
 ### Contribute
 Before opening any Pull Request please [post an issue](https://github.com/trainline/react-skeletor/issues/new) explaining the problem so that the team can evaluate if the Pull Request is relevant.
+
+[Learn more on medium](https://codeburst.io/achieve-skeleton-loading-with-react-a12404678030)
