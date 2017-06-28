@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "cross-env NODE_ENV=dev webpack-dev-server",
-    "build": "cross-env NODE_ENV=prod webpack && mkdir dist/demo && cp dist/index.html dist/demo && cp dist/bundle.js dist/demo",
+    "build": "cross-env NODE_ENV=prod webpack && mkdir dist/demo && cp dist/* dist/demo/ | true",
     "clean": "rm -rf dist",
     "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d dist"
