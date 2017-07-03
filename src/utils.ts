@@ -5,6 +5,8 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
+export type Styling = (() => React.CSSProperties) | React.CSSProperties | string;
+
 export interface Pendable {
   isPending: boolean;
 }
@@ -26,6 +28,10 @@ export const createSkeletonStyle = (color: string) => ({
 export const contextTypes = {
   skeletor: PropTypes.shape({
     isPending: PropTypes.bool,
-    styling: PropTypes.func
+    styling: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      PropTypes.object
+    ])
   })
 };

@@ -3,7 +3,7 @@
 * See LICENSE.txt in the project root for license information.
 */
 import * as React from 'react';
-import { contextTypes } from './utils';
+import { contextTypes, Styling } from './utils';
 
 export type DummyFn<TProps> = (props: TProps) => TProps;
 export type DummyData<TProps> = TProps | DummyFn<TProps>;
@@ -11,7 +11,7 @@ export type DummyData<TProps> = TProps | DummyFn<TProps>;
 export function createSkeletonProvider<TPendingProps, TProps extends TPendingProps = TPendingProps>(
   dummyData: DummyData<TPendingProps>,
   predicate: (props: TPendingProps) => boolean,
-  styling?: React.CSSProperties | string,
+  styling?: Styling,
 ) {
   return function(
     // tslint:disable-next-line:max-line-length

@@ -45,7 +45,7 @@ describe('createSkeletonElement', () => {
     });
   });
 
-  it('should concatenate classname from context and props', () => {
+  it('should concatenate classname from context and props (style using function)', () => {
     const DivWithContext = withContext({
       skeletor: PropTypes.object
     }, (skeletor) => ({
@@ -57,5 +57,77 @@ describe('createSkeletonElement', () => {
     const wrapper = mount(<DivWithContext className="anotherHelloWorld"/>);
 
     expect(wrapper.find('div').props().className).toEqual('anotherHelloWorld helloWorld');
+  });
+
+  it('should concatenate classname from context and props', () => {
+    const DivWithContext = withContext({
+      skeletor: PropTypes.object
+    }, (skeletor) => ({
+      skeletor: {
+        isPending: true,
+        styling: 'helloWorld'
+      }
+    }))(createSkeletonElement('div'));
+    const wrapper = mount(<DivWithContext className="anotherHelloWorld"/>);
+
+    expect(wrapper.find('div').props().className).toEqual('anotherHelloWorld helloWorld');
+  });
+
+  it('should accept inline style object', () => {
+    const DivWithContext = withContext({
+      skeletor: PropTypes.object
+    }, (skeletor) => ({
+      skeletor: {
+        isPending: true
+      }
+    }))(createSkeletonElement('div', { backgroundColor: 'black' }));
+    const wrapper = mount(<DivWithContext/>);
+
+    expect(wrapper.find('div').props().style).toEqual({
+      backgroundColor: 'black'
+    });
+  });
+
+  it('should accept classname', () => {
+    const DivWithContext = withContext({
+      skeletor: PropTypes.object
+    }, (skeletor) => ({
+      skeletor: {
+        isPending: true
+      }
+    }))(createSkeletonElement('div', 'aClassName'));
+    const wrapper = mount(<DivWithContext/>);
+
+    expect(wrapper.find('div').props().className).toEqual('aClassName');
+  });
+
+  it('should accept function to style', () => {
+    const DivWithContext = withContext({
+      skeletor: PropTypes.object
+    }, (skeletor) => ({
+      skeletor: {
+        isPending: true
+      }
+    }))(createSkeletonElement('div', () => 'aClassName'));
+    const wrapper = mount(<DivWithContext/>);
+
+    expect(wrapper.find('div').props().className).toEqual('aClassName');
+  });
+
+  it('should merge style from context and props', () => {
+    const DivWithContext = withContext({
+      skeletor: PropTypes.object
+    }, (skeletor) => ({
+      skeletor: {
+        isPending: true,
+        styling: { color: 'grey' }
+      }
+    }))(createSkeletonElement('div', { backgroundColor: 'grey' }));
+    const wrapper = mount(<DivWithContext/>);
+
+    expect(wrapper.find('div').props().style).toEqual({
+      color: 'grey',
+      backgroundColor: 'grey'
+    });
   });
 });
