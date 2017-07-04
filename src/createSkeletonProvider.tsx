@@ -40,18 +40,10 @@ export function createSkeletonProvider<TPendingProps, TProps extends TPendingPro
           // Either call the dummyData as a function or assign dummyData to data
           const data = typeof dummyData === 'function' ? dummyData(props) : dummyData;
 
-          // TODO: fix with typescript 2.4
-          return React.createElement(
-            WrappedComponent,
-            Object.assign({}, props, data) as TProps
-          );
+          return <WrappedComponent {...props} {...data} />;
         }
 
-        // TODO: fix with typescript 2.4
-        return React.createElement(
-          WrappedComponent,
-          props as TProps
-        );
+        return <WrappedComponent {...props} />;
       }
     }
 
