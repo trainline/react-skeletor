@@ -130,4 +130,17 @@ describe('createSkeletonElement', () => {
       backgroundColor: 'grey'
     });
   });
+
+  it('should be hidden from any assistive technology', () => {
+    const DivWithContext = withContext({
+      skeletor: PropTypes.object
+    }, (skeletor) => ({
+      skeletor: {
+        isPending: true
+      }
+    }))(createSkeletonElement('div'));
+    const wrapper = mount(<DivWithContext/>);
+
+    expect(wrapper.find('div').props()['aria-hidden']).toEqual(true);
+  });
 });

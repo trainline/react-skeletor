@@ -43,7 +43,7 @@ export const createSkeletonElement = <
       styling = skeletor.styling;
     }
 
-    let newProps = { ...props};
+    let newProps = { ...props };
     if (isPending) {
       const contextStyle = unwrapStyle(styling);
       const propStyle = unwrapStyle(pendingStyle);
@@ -59,6 +59,8 @@ export const createSkeletonElement = <
         typeof contextStyle === 'string' && contextStyle,
         typeof propStyle === 'string' && propStyle
       ]);
+
+      newProps['aria-hidden'] = true;
     }
     // tslint:disable-next-line:no-any
     return React.createElement(type as any, newProps);
