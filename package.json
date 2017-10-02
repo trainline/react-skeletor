@@ -15,7 +15,8 @@
     "deploy": "npm publish --access public",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
     "test": "jest --config test.config.json --no-cache",
-    "test:watch": "jest --config test.config.json --watch"
+    "test:watch": "jest --config test.config.json --watch",
+    "prettify": "prettier --write src/*.ts src/*.tsx src/**/*.ts src/**/*.tsx"
   },
   "files": [
     "lib"
@@ -55,6 +56,7 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "jest": "^21.2.1",
+    "prettier": "^1.7.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",

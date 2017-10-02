@@ -5,13 +5,11 @@
 import * as React from 'react';
 import { contextTypes, Context, Styling } from './utils';
 
-const createStyle = (styles: React.CSSProperties[]) => (
-  styles.filter(Boolean).reduce((acc, next) => ({ ...acc, ...next }), {})
-);
+const createStyle = (styles: React.CSSProperties[]) =>
+  styles.filter(Boolean).reduce((acc, next) => ({ ...acc, ...next }), {});
 
-const createClassName = (classnames: (string|undefined)[]) => (
-  classnames.filter(Boolean).join(' ')
-);
+const createClassName = (classnames: (string | undefined)[]) =>
+  classnames.filter(Boolean).join(' ');
 
 const unwrapStyle = (style?: Styling) => {
   if (!style) {
@@ -32,9 +30,12 @@ export const createSkeletonElement = <
 >(
   type: React.ClassType<P, T, C> | string,
   pendingStyle?: Styling
- ) => {
-  const ExportedComponent: React.StatelessComponent<any> = ( // tslint:disable-line
-    props: any, { skeletor }: Context // tslint:disable-line
+) => {
+  // tslint:disable-next-line:no-any
+  const ExportedComponent: React.StatelessComponent<any> = (
+    // tslint:disable-next-line:no-any
+    props: any,
+    { skeletor }: Context
   ) => {
     let isPending;
     let styling;

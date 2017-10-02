@@ -5,7 +5,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-export type Styling = (() => React.CSSProperties) | React.CSSProperties | string;
+export type Styling =
+  | (() => React.CSSProperties)
+  | React.CSSProperties
+  | string;
 
 export interface Pendable {
   isPending: boolean;
@@ -22,7 +25,7 @@ export interface Context {
 
 export const createSkeletonStyle = (color: string) => ({
   backgroundColor: color,
-  color,
+  color
 });
 
 export const contextTypes = {

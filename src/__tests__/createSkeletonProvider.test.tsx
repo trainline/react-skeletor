@@ -31,16 +31,13 @@ const actualData: CardProps = {
 };
 
 describe('createSkeletonProvider', () => {
-
   it('should render dummy data', () => {
     const SkeletonizedCard = createSkeletonProvider<CardProps>(
       dummyData,
       () => true
     )(Card);
 
-    const wrapper = mount(
-      <SkeletonizedCard/>
-    );
+    const wrapper = mount(<SkeletonizedCard />);
 
     expect(wrapper.find('h1').text()).toBe(dummyData.firstName);
   });
@@ -51,9 +48,7 @@ describe('createSkeletonProvider', () => {
       () => false
     )(Card);
 
-    const wrapper = mount(
-      <SkeletonizedCard {...actualData}/>
-    );
+    const wrapper = mount(<SkeletonizedCard {...actualData} />);
 
     expect(wrapper.find('h1').text()).toBe(actualData.firstName);
   });
