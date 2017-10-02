@@ -8,6 +8,7 @@
     "tsx",
     "js"
   ],
+  "setupTestFrameworkScriptFile": "<rootDir>/jest/setupTestFrameworkScriptFile.js",
   "browser": true,
   "verbose": true
 }
