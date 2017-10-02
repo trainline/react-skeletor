@@ -43,12 +43,14 @@ const UserDetailPage = ({ user }) => (
 export default createSkeletonProvider(
   // Dummy data with a similar shape to the component's data
   {
-    firstName: '_____',
-    lastName: '________'
+    user: {
+      firstName: '_____',
+      lastName: '________'
+    }
   },
-  // Predicate specifying whether or not the data is loaded
+  // Predicate that returns true if component is in a loading state
   ({ user }) => user === undefined,
-  // Define the placeholder design for the children elements,
+  // Define the placeholder styling for the children elements,
   () => ({
     color: 'grey',
     backgroundColor: 'grey'
