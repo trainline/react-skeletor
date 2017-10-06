@@ -63,8 +63,8 @@ export const createSkeletonElement = <
 
       newProps['aria-hidden'] = true;
     }
-    // tslint:disable-next-line:no-any
-    return React.createElement(type as any, newProps);
+
+    return React.createElement(type, newProps);
   };
 
   ExportedComponent.contextTypes = contextTypes;

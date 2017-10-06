@@ -16,7 +16,7 @@ export interface Pendable {
 
 export interface SkeletorContext {
   isPending: boolean;
-  styling: () => React.CSSProperties | string;
+  styling: Styling;
 }
 
 export interface Context {
