@@ -158,43 +158,6 @@
         box-sizing: inherit;
         font-family: 'open-sans', monospace;
       }
-
-      /*
-        Animation is here since we can't do this in JS with inline styles :(
-      */
-      @keyframes skeletonAnimation {
-        0% {
-          opacity: 0.8;
-        }
-        50% {
-          opacity: 0.4;
-        }
-        100% {
-          opacity: 0.8;
-        }
-      }
-
-      /*
-        Pending styles for CSS class based example
-      */
-      .pending {
-        color: #bdc3c7!important;
-        background-color: #bdc3c7!important;
-        border-color: #bdc3c7!important;
-        animation-name: skeletonAnimation;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-
-      .pending-home {
-        color: white;
-        background-color: white;
-        animation-name: skeletonAnimation;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
     </style>
   </head>
   <body>

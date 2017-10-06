@@ -50,8 +50,11 @@
   "devDependencies": {
     "@types/enzyme": "^2.7.6",
     "@types/jest": "^19.2.2",
+    "@types/prettier": "^1.7.0",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^16.0.7",
+    "@types/react-dom": "^16.0.0",
+    "@types/react-test-renderer": "^15.5.4",
     "@types/recompose": "^0.22.0",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",

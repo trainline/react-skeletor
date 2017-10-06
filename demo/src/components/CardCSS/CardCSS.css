@@ -1,3 +1,74 @@
 /*
   CSS Should be here for modularity but to avoid complicating the build process its in index.html
 */
+.card__container {
+  display: flex;
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.card__avatar {
+  display: block;
+  width: 150px;
+  height: 150px;
+}
+
+.card__content {
+  background-color: #f0f0f0;
+  padding: 10px 16px;
+  color: #34495e;
+  font-family: system-ui, sans-serif;
+  width: calc(100% - 150px);
+}
+
+.card__first-name {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card__last-name {
+  margin: 0;
+}
+
+.card__description {
+  color: #34495e;
+  margin-top: 10px;
+}
+
+/*
+  Animation is here since we can't do this in JS with inline styles :(
+*/
+@keyframes skeletonAnimation {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/*
+  Pending styles for CSS class based example
+*/
+.pending {
+  color: #bdc3c7!important;
+  background-color: #bdc3c7!important;
+  border-color: #bdc3c7!important;
+  animation-name: skeletonAnimation;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.pending-home {
+  color: white;
+  background-color: white;
+  animation-name: skeletonAnimation;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
