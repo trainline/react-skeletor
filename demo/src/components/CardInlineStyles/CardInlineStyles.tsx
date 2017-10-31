@@ -20,17 +20,17 @@ const dummyData = {
 };
 
 export interface Props {
-  card: Card;
+  card?: Card;
 }
 
 export const CardComponent: React.StatelessComponent<Props> = ({ card }) => (
   <div className={css(styles.container)}>
-    <Img className={css(styles.avatar)} src={card.avatar}/>
+    <Img className={css(styles.avatar)} src={card!.avatar}/>
     <div className={css(styles.content)}>
       <h1 className={css(styles.firstName)}>
-        <Span>{card.title}</Span>
+        <Span>{card!.title}</Span>
       </h1>
-      <Div className={css(styles.description)}>{card.description}</Div>
+      <Div className={css(styles.description)}>{card!.description}</Div>
     </div>
   </div>
 );

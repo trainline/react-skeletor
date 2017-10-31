@@ -20,13 +20,13 @@ const loading = 'pending';
 export const Title = createSkeletonElement(styled.h1`
   marginTop: 0;
   marginBottom: 10;
-`, loading);
+` as any, loading);
 
 export const Avatar = createSkeletonElement(styled.img`
   display: block;
   width: 150px;
   height: 150px;
-`, loading);
+` as any, loading);
 
 export const Content = styled.div`
   backgroundColor: #f0f0f0;
@@ -39,4 +39,4 @@ export const Content = styled.div`
 export const Description = createSkeletonElement(styled.div`
   color: #34495e;
   marginTop: 10px;
-`, loading);
+` as any, loading);

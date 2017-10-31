@@ -5,11 +5,16 @@
 import * as React from 'react';
 import { contextTypes, Context, Styling } from './utils';
 
-const createStyle = (styles: React.CSSProperties[]) =>
-  styles.filter(Boolean).reduce((acc, next) => ({ ...acc, ...next }), {});
+const createStyle = (styles: (React.CSSProperties | boolean | undefined)[]) =>
+  styles
+    // tslint:disable-next-line:no-any
+    .filter((style: any): style is React.CSSProperties => !!style)
+    .reduce((acc, next) => ({ ...acc, ...next }), {});
 
-const createClassName = (classnames: (string | undefined)[]) =>
-  classnames.filter(Boolean).join(' ');
+const createClassName = (classnames: (string | undefined | boolean)[]) =>
+  classnames
+    .filter(Boolean)
+    .join(' ');
 
 const unwrapStyle = (style?: Styling) => {
   if (!style) {
@@ -23,18 +28,19 @@ const unwrapStyle = (style?: Styling) => {
   return style;
 };
 
-export const createSkeletonElement = <
-  P,
-  T extends React.Component<P, React.ComponentState>,
-  C extends React.ComponentClass<P>
->(
-  type: React.ClassType<P, T, C> | string,
+export interface InjectedProps {
+  style?: React.CSSProperties | undefined;
+  className?: string | undefined;
+  'aria-hidden'?: boolean;
+}
+
+// tslint:disable-next-line:no-any
+export const createSkeletonElement = <T = any>(
+  type: React.SFC<T> | string,
   pendingStyle?: Styling
 ) => {
-  // tslint:disable-next-line:no-any
-  const ExportedComponent: React.StatelessComponent<any> = (
-    // tslint:disable-next-line:no-any
-    props: any,
+  const ExportedComponent: React.StatelessComponent<T> = (
+    props: T & InjectedProps,
     { skeletor }: Context
   ) => {
     let isPending;
@@ -44,7 +50,8 @@ export const createSkeletonElement = <
       styling = skeletor.styling;
     }
 
-    let newProps = { ...props };
+    // tslint:disable-next-line:no-any
+    let newProps: T & InjectedProps = { ...(props as any) };
     if (isPending) {
       const contextStyle = unwrapStyle(styling);
       const propStyle = unwrapStyle(pendingStyle);

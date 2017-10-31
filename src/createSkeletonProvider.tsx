@@ -5,47 +5,30 @@
 import * as React from 'react';
 import { contextTypes, Styling } from './utils';
 
-export type DummyFn<TProps> = (props: TProps) => TProps;
-export type DummyData<TProps> = TProps | DummyFn<TProps>;
-
-export function createSkeletonProvider<
-  TPendingProps,
-  TProps extends TPendingProps = TPendingProps
->(
-  dummyData: DummyData<TPendingProps>,
-  predicate: (props: TPendingProps) => boolean,
+export function createSkeletonProvider<TProps>(
+  dummyData: Partial<TProps> | ((props: Partial<TProps>) => Partial<TProps>),
+  predicate: (props: Partial<TProps>) => boolean,
   styling?: Styling
 ) {
-  return function(
-    // tslint:disable-next-line:max-line-length
-    // tslint:disable-next-line:no-any
-    WrappedComponent: React.ClassType<TProps, any, any> | React.SFC<TProps>
-    // tslint:disable-next-line:no-any
-  ): React.ClassType<TProps, any, any> {
-    class ExportedComponent extends React.Component<TPendingProps, void> {
+  return function<T extends Partial<TProps>>(
+    WrappedComponent: React.SFC<T>
+  ): React.ComponentClass<T> {
+    class ExportedComponent extends React.Component<T> {
       static childContextTypes = contextTypes;
 
-      getChildContext = () => ({
-        skeletor: {
-          isPending: predicate(this.props),
-          styling: styling
-        }
-      });
+      getChildContext = () => ({ skeletor: { isPending: predicate(this.props), styling: styling } });
 
       render() {
-        const { props } = this;
-
         // Append dummy data only if the condition defined by the predicate are met,
         // by default if there is no predicate, append the data.
-        if (predicate ? predicate(props) : true) {
+        if (predicate ? predicate(this.props) : true) {
           // Either call the dummyData as a function or assign dummyData to data
-          const data =
-            typeof dummyData === 'function' ? dummyData(props) : dummyData;
+          const data = typeof dummyData === 'function' ? dummyData(this.props) : dummyData;
 
-          return <WrappedComponent {...props} {...data} />;
+          return <WrappedComponent {...this.props} {...data} />;
         }
 
-        return <WrappedComponent {...props} />;
+        return <WrappedComponent {...this.props} />;
       }
     }
 

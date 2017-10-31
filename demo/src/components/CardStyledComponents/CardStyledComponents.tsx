@@ -17,25 +17,19 @@ const dummyData = {
       ___ _____ ___ ___ _ _______ ___ ______ ___ ___
       __ _____ _____ _____ _____ ____`.trim(),
     avatar: ''
-  },
-  title: 'defaultTitle',
+  }
 };
 
-export interface PendingProps {
+export interface Props {
   card?: Card;
-  title: string;
-}
-
-export interface Props extends PendingProps {
-  card: Card;
 }
 
 export const CardComponent: React.StatelessComponent<Props> = ({ card }) => (
   <Container>
-    <Avatar src={card.avatar} />
+    <Avatar src={card!.avatar} />
     <Content>
-      <Title>{card.title}</Title>
-      <Description>{card.description}</Description>
+      <Title>{card!.title}</Title>
+      <Description>{card!.description}</Description>
     </Content>
   </Container>
 );
@@ -43,5 +37,5 @@ export const CardComponent: React.StatelessComponent<Props> = ({ card }) => (
 export default createSkeletonProvider(
   dummyData,
   // Declare pending state if data is undefined
-  (props: Props) => props.card === undefined
+  (props) => props.card === undefined
 )(CardComponent);
