@@ -3,7 +3,7 @@
 * See LICENSE.txt in the project root for license information.
 */
 import * as React from 'react';
-import { createSkeletonProvider, Span, Img, Div } from '../../../../';
+import { createSkeletonProvider, createSkeletonElement } from '../../../../';
 import { css } from 'aphrodite/no-important';
 import { Card } from '../../data';
 
@@ -22,6 +22,10 @@ const dummyData = {
 export interface Props {
   card?: Card;
 }
+
+const Span = createSkeletonElement('span');
+const Img = createSkeletonElement('img');
+const Div = createSkeletonElement('div');
 
 export const CardComponent: React.StatelessComponent<Props> = ({ card }) => (
   <div className={css(styles.container)}>

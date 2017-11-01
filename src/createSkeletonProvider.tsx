@@ -5,12 +5,12 @@
 import * as React from 'react';
 import { contextTypes, Styling } from './utils';
 
-export function createSkeletonProvider<TProps>(
-  dummyData: Partial<TProps> | ((props: Partial<TProps>) => Partial<TProps>),
-  predicate: (props: Partial<TProps>) => boolean,
+export function createSkeletonProvider<U>(
+  dummyData: Partial<U> | ((props: Partial<U>) => Partial<U>),
+  predicate: (props: Partial<U>) => boolean,
   styling?: Styling
 ) {
-  return function<T extends Partial<TProps>>(
+  return function<T extends Partial<U>>(
     WrappedComponent: React.SFC<T>
   ): React.ComponentClass<T> {
     class ExportedComponent extends React.Component<T> {
