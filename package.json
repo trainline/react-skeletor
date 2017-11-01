@@ -1,6 +1,6 @@
 {
   "name": "@trainline/react-skeletor",
-  "version": "0.1.8",
+  "version": "1.0.0",
   "description": "Make your application look nice when its loading!",
   "main": "lib/index.js",
   "directories": {
