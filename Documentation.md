@@ -3,16 +3,16 @@ High Order Function which defines the loading state of your app and inject the d
 
 #### Signature
 ```ts
-const createSkeletonProvider = <TPendingProps, TProps extends TPendingProps = TPendingProps>(
-  dummyData: TPendingProps | (props: TPendingProps) => TPendingProps,
-  predicate: (props: TPendingProps) => boolean,
-  styling?: () => React.CSSProperties | string,
-) => (WrappedComponent: AnyComponent<TProps, void>): React.ComponentClass<TPendingProps>
+const createSkeletonProvider = <U>(
+  dummyData: Partial<U> | ((props: Partial<U>) => Partial<U>),
+  predicate: (props: Partial<U>) => boolean,
+  styling?: (() => (React.CSSProperties | string)) | string | React.CSSProperties,
+) => <T extends Partial<U>>(WrappedComponent: React.SFC<T>): React.ComponentClass<T>
 ```
 
-- dummyData: The data you want to inject into your component, accept an Object or a function that get props passed which return your dummy data
+- dummyData: The data you want to inject into your component, accept an Object or a function that get props passed and return your dummy data
 - predicate: A function that get props passed and define the loading state of your application
-- styling: A function that return either an inline style object or a className that get injected into the skeleton components
+- styling: A function that return either an inline style object or a className that get injected into the skeleton components your loading state is pending
 
 - WrappedComponent: The React component that get the data injected into
 
@@ -42,16 +42,17 @@ Factory function which creates skeleton React components. Return a High Order Co
 
 #### Signature
 ```ts
-const createSkeletonElement = (
-  type: React.ClassType<P, T, C> | string,
-  pendingStyle?: React.CSSProperties | string
-) => JSX.Element
+const createSkeletonElement = <T>(
+  type: React.SFC<T> | string,
+  pendingStyle?: (() => (React.CSSProperties | string)) | string | React.CSSProperties
+) => React.StatelessComponent<T>
 ```
 
 - type: Either a Component class or a string that get passed to React.CreateElement to create your skeleton high order component
+- pendingStyle: the style applied to the single element when your app loading state is pending
 
 #### Example
-```js
+```jsx
 import { createSkeletonElement } from '@trainline/react-skeletor';
 
 const SkeletonLoadingDiv = createSkeletonElement('div');
@@ -59,22 +60,4 @@ const SkeletonLoadingDiv = createSkeletonElement('div');
 const MyStatelessComponent = ({ username }) => (
   <SkeletonLoadingDiv>{username}</SkeletonLoadingDiv>
 )
-```
-
-### Div, Span, H1, H2, H3, H4, H5, P, Img
-Creates a series of Html elements for you using the `createSkeletonElement` factory.
-
-#### Signature
-```ts
-JSX.Element<any>
-```
-
-#### Example
-```js
-import { Div as SkeletonDiv } from '@trainline/react-skeletor';
-
-const myStatelessComponent = ({ username }) => (
-  <SkeletonDiv>{username}</SkeletonDiv>
-)
-
 ```

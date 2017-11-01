@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 export type Styling =
-  | (() => React.CSSProperties)
+  | (() => (React.CSSProperties|string))
   | React.CSSProperties
   | string;
 
