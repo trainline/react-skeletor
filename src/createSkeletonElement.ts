@@ -5,32 +5,25 @@
 import * as React from 'react';
 import { contextTypes, Context, Styling } from './utils';
 
-const createStyle = (styles: (React.CSSProperties | boolean | undefined)[]) =>
+const createStyle = (styles: (React.CSSProperties | undefined)[]) =>
   styles
     // tslint:disable-next-line:no-any
     .filter((style: any): style is React.CSSProperties => !!style)
     .reduce((acc, next) => ({ ...acc, ...next }), {});
 
-const createClassName = (classnames: (string | undefined | boolean)[]) =>
+const createClassName = (classnames: (string | undefined)[]) =>
   classnames
     .filter(Boolean)
     .join(' ');
 
-const unwrapStyle = (style?: Styling) => {
-  if (!style) {
-    return undefined;
-  }
-
-  if (typeof style === 'function') {
-    return style();
-  }
-
-  return style;
-};
+const unwrapStyle = (style?: Styling) =>
+  typeof style === 'function' ?
+    style() :
+    (style || undefined);
 
 export interface InjectedProps {
-  style?: React.CSSProperties | undefined;
-  className?: string | undefined;
+  style?: React.CSSProperties;
+  className?: string;
   'aria-hidden'?: boolean;
 }
 
@@ -43,29 +36,23 @@ export const createSkeletonElement = <T = any>(
     props: T & InjectedProps,
     { skeletor }: Context
   ) => {
-    let isPending;
-    let styling;
-    if (skeletor) {
-      isPending = skeletor.isPending;
-      styling = skeletor.styling;
-    }
+    const { isPending = false, styling = undefined } = skeletor || {};
 
     // tslint:disable-next-line:no-any
-    let newProps: T & InjectedProps = { ...(props as any) };
+    const newProps: T & InjectedProps = { ...(props as any) };
     if (isPending) {
-      const contextStyle = unwrapStyle(styling);
-      const propStyle = unwrapStyle(pendingStyle);
+      const [ contextStyle, propStyle ] = [ styling, pendingStyle ].map(unwrapStyle);
 
       newProps.style = createStyle([
         props.style,
-        typeof contextStyle !== 'string' && contextStyle,
-        typeof propStyle !== 'string' && propStyle
+        typeof contextStyle !== 'string' && contextStyle || undefined,
+        typeof propStyle !== 'string' && propStyle || undefined
       ]);
 
       newProps.className = createClassName([
         props.className,
-        typeof contextStyle === 'string' && contextStyle,
-        typeof propStyle === 'string' && propStyle
+        typeof contextStyle === 'string' && contextStyle || undefined,
+        typeof propStyle === 'string' && propStyle || undefined
       ]);
 
       newProps['aria-hidden'] = true;
