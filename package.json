@@ -42,6 +42,8 @@
   },
   "homepage": "https://github.com/trainline/react-skeletor#readme",
   "dependencies": {
+    "@types/prop-types": "^15.5.1",
+    "@types/react": "^16.3.11",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
@@ -51,8 +53,6 @@
     "@types/enzyme": "^2.7.6",
     "@types/jest": "^19.2.2",
     "@types/prettier": "^1.7.0",
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.19",
     "@types/react-dom": "^16.0.2",
     "@types/react-test-renderer": "^16.0.0",
     "@types/recompose": "^0.22.0",
