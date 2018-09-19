@@ -38,3 +38,6 @@ export const contextTypes = {
     ])
   })
 };
+
+export const getComponentName = (type: React.ComponentType): string =>
+  type.displayName || type.name || 'SkeletorComponent';

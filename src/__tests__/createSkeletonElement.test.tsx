@@ -25,7 +25,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('span'));
 
     const wrapper = mount(<SpanWithContext>Hello world</SpanWithContext>);
-    expect(wrapper.find('span').text()).toBe('Hello world');
+    expect(wrapper.find('span').at(1).text()).toBe('Hello world');
   });
 
   it('should merge styles from context and props', () => {
@@ -42,7 +42,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div'));
     const wrapper = mount(<DivWithContext style={{ position: 'absolute' }} />);
 
-    expect(wrapper.find('div').props().style).toEqual({
+    expect(wrapper.find('div').at(1).props().style).toEqual({
       position: 'absolute',
       left: 0,
       right: 0,
@@ -65,7 +65,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div'));
     const wrapper = mount(<DivWithContext className="anotherHelloWorld" />);
 
-    expect(wrapper.find('div').props().className).toEqual(
+    expect(wrapper.find('div').at(1).props().className).toEqual(
       'anotherHelloWorld helloWorld'
     );
   });
@@ -84,7 +84,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div'));
     const wrapper = mount(<DivWithContext className="anotherHelloWorld" />);
 
-    expect(wrapper.find('div').props().className).toEqual(
+    expect(wrapper.find('div').at(1).props().className).toEqual(
       'anotherHelloWorld helloWorld'
     );
   });
@@ -102,7 +102,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div', { backgroundColor: 'black' }));
     const wrapper = mount(<DivWithContext />);
 
-    expect(wrapper.find('div').props().style).toEqual({
+    expect(wrapper.find('div').at(1).props().style).toEqual({
       backgroundColor: 'black'
     });
   });
@@ -120,7 +120,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div', 'aClassName'));
     const wrapper = mount(<DivWithContext />);
 
-    expect(wrapper.find('div').props().className).toEqual('aClassName');
+    expect(wrapper.find('div').at(1).props().className).toEqual('aClassName');
   });
 
   it('should accept function to style', () => {
@@ -136,7 +136,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div', () => 'aClassName'));
     const wrapper = mount(<DivWithContext />);
 
-    expect(wrapper.find('div').props().className).toEqual('aClassName');
+    expect(wrapper.find('div').at(1).props().className).toEqual('aClassName');
   });
 
   it('should merge style from context and props', () => {
@@ -153,7 +153,7 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div', { backgroundColor: 'grey' }));
     const wrapper = mount(<DivWithContext />);
 
-    expect(wrapper.find('div').props().style).toEqual({
+    expect(wrapper.find('div').at(1).props().style).toEqual({
       color: 'grey',
       backgroundColor: 'grey'
     });
@@ -172,6 +172,23 @@ describe('createSkeletonElement', () => {
     )(createSkeletonElement('div'));
     const wrapper = mount(<DivWithContext />);
 
-    expect(wrapper.find('div').props()['aria-hidden']).toEqual(true);
+    expect(wrapper.find('div').at(1).props()['aria-hidden']).toEqual(true);
+  });
+
+  it('should attach a displayName', () => {
+    const Comp: React.StatelessComponent = () => <div />;
+    expect(createSkeletonElement(Comp).displayName).toBe('Comp');
+
+    const CompWithDisplayName: React.StatelessComponent = () => <div />;
+    CompWithDisplayName.displayName = 'ParagraphComp';
+    expect(createSkeletonElement(CompWithDisplayName).displayName).toBe(
+      'ParagraphComp'
+    );
+
+    expect(createSkeletonElement('div').displayName).toBe('div');
+
+    expect(createSkeletonElement(() => <div />).displayName).toBe(
+      'SkeletorComponent'
+    );
   });
 });
