@@ -3,7 +3,7 @@
 * See LICENSE.txt in the project root for license information.
 */
 import * as React from 'react';
-import { contextTypes, Context, Styling } from './utils';
+import { contextTypes, Context, getComponentName, Styling } from './utils';
 
 const createStyle = (styles: (React.CSSProperties | undefined)[]) =>
   styles
@@ -29,7 +29,7 @@ export interface InjectedProps {
 
 // tslint:disable-next-line:no-any
 export const createSkeletonElement = <T = any>(
-  type: React.SFC<T> | string,
+  type: React.ComponentType<T> | string,
   pendingStyle?: Styling
 ) => {
   const ExportedComponent: React.StatelessComponent<T> = (
@@ -62,6 +62,8 @@ export const createSkeletonElement = <T = any>(
   };
 
   ExportedComponent.contextTypes = contextTypes;
+  ExportedComponent.displayName =
+    typeof type === 'string' ? type : getComponentName(type);
 
   return ExportedComponent;
 };
