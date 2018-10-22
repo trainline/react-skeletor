@@ -29,7 +29,7 @@ export interface InjectedProps {
 
 // tslint:disable-next-line:no-any
 export const createSkeletonElement = <T = any>(
-  type: React.SFC<T> | string,
+  type: React.ComponentType<T> | string,
   pendingStyle?: Styling
 ) => {
   const ExportedComponent: React.StatelessComponent<T> = (
