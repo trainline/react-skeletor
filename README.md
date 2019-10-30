@@ -58,7 +58,7 @@ export default createSkeletonProvider(
 )(UserDetailPage);
 ```
 
-3. Use a skeleton element to toggle between the placehoder design and the real content depending on the loading status in the context.
+3. Use a skeleton element to toggle between the placeholder design and the real content depending on the loading status in the context.
 
 ```jsx
 // NameCard.jsx
